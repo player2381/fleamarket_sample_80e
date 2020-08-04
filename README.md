@@ -30,9 +30,9 @@ Things you may want to cover:
 <!-- |name|string|null:false, unique:true|
 |password|string|null:false, unique:true| -->
 ### Association
-- belongs_to :credit_card
-- belongs_to :profile
-- belongs_to :user_address
+- has_many :credit_cards
+- has_one :profile
+- has_one :user_address
 <!-- - belongs_to :point -->
 - has_many :favorites
 - has_many :todo_lists
@@ -86,8 +86,8 @@ Things you may want to cover:
 |production_img_id|null:false, foreign_key: true|
 
 ### Association
-belongs_to :categories
-belongs_to :brands
+belongs_to :category
+belongs_to :brand
 belongs_to :evaluation
 has_many :favorites
 has_many :images, dependent: :destroy
@@ -145,7 +145,7 @@ has_many :productions
 |phone_number|integer|null: false, unique: true|
 |user_id|string|null: false, foreign_key: true|
 ### Association
-belongs_to :users
+belongs_to :user
 
 
 ## pointsテーブル
@@ -154,7 +154,7 @@ belongs_to :users
 |user_id|string|null: false, foreign_key: true|
 |point|integer|
 ### Association
-belongs_to :users
+belongs_to :user
 
 
 ## commentsテーブル
