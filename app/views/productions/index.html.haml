@@ -7,14 +7,27 @@
   = link_to "新規登録", new_user_registration_path
   = link_to "ログイン", new_user_session_path
 
-.test1
-- @parents.each do |parent|
-  =parent.name
+-# .test1
+-# - @parents.each do |parent|
+-#   =parent.name
 
-  .test2
-  - parent.children.each do |child|
-    =child.name
+-#   .test2
+-#   - parent.children.each do |child|
+-#     =child.name
 
-    .test3
-    - child.children.each do |grandchild|
-      =grandchild.name
+-#     .test3
+-#     - child.children.each do |grandchild|
+-#       =grandchild.name
+
+%h1 カテゴリー一覧
+%ul.categories
+  - @parents.each do |parent|
+    %li.parents= link_to "#{parent.name}", root_path(parent)
+
+    %ul.categories__children
+      - parent.children.each do |child|
+        %li.childern= link_to "#{child.name}", root_path(child)
+
+        %ul.categories__grandchildren
+          - child.children.each do |grandchild|
+            %li= link_to "#{grandchild.name}", root_path(grandchild)
