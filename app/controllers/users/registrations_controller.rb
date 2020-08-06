@@ -34,7 +34,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   # def destroy
-  #   super
+  #   redirect_to new_user_registration_path
   # end
 
   # GET /resource/cancel
@@ -68,8 +68,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def address_params
-    params.require(:address).permit(:address_first_name, :address_family_name, :address_first_name_kana, :address_family_name_kana, :post_code, :prefecture_code, :city, :house_number, :building_name, :phone_number, :user_id)
+  
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:address_first_name, :address_family_name, :address_first_name_kana, :address_family_name_kana, :post_code, :prefecture_code, :city, :house_number, :building_name, :phone_number, :user_id])
   end
 
 end
