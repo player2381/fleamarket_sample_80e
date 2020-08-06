@@ -22,6 +22,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_address
   end
 
+  def new_address
+  end
+
+
+  def create_address
+    @user = User.new(session["devise.regist_data"]["user"])
+    @address = Address.new(address_params)
+    unless @address.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_address and return
+    end
+    @user.build_address(@address.attributes)
+    @user.save
+    sign_in(:user, @user)
+    redirect_to root_path
+  end
+  
   # GET /resource/edit
   # def edit
   #   super
@@ -68,8 +85,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys:
+                          [:name])
+  end
+
   def address_params
-    params.require(:address).permit(:address_first_name, :address_family_name, :address_first_name_kana, :address_family_name_kana, :post_code, :prefecture_code, :city, :house_number, :building_name, :phone_number, :user_id)
+    params.require(:address).permit(:address_first_name, :address_family_name, :address_first_name_kana, :address_family_name_kana, :post_code, :prefecture_code, :city, :house_number, :building_name, :phone_number)
   end
 
 end
