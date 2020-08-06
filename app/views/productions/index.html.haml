@@ -6,3 +6,15 @@
   %h2 ログインしていません
   = link_to "新規登録", new_user_registration_path
   = link_to "ログイン", new_user_session_path
+
+.test1
+- @parents.each do |parent|
+  =parent.name
+
+  .test2
+  - parent.children.each do |child|
+    =child.name
+
+    .test3
+    - child.children.each do |grandchild|
+      =grandchild.name
