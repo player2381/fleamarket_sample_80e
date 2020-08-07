@@ -1,25 +1,46 @@
-%h2 ユーザー情報登録
-= form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Next"
-= render "devise/shared/links"
+.account__page
+  .account__page__header
+    = link_to image_tag("logo.png", alt: "logo"), root_path
+  .account__page__main
+    = form_for @user, url: user_registration_path do |f|
+      .account__page__main__content
+        .account__page__main__content--error
+          = devise_error_messages!
+        .field__title
+          会員情報の登録
+        .field__label
+          .name
+            = f.label :nickname
+          .required
+            必須
+        .field__input
+          = f.text_field :name, autofocus: true, placeholder: "例）ケンケン", class: "textbox"
+        .field__label
+          .name
+            = f.label :email
+          .required
+            必須
+        .field__input
+          = f.email_field :email, placeholder: "携帯・ＰＣどちらでも可", class: "textbox"
+        .field__label
+          .name
+            = f.label :password
+          .required
+            必須
+        .field__input
+          = f.password_field :password, autocomplete: "off", placeholder: "7文字以上の半角英数字", class: "textbox", id: "js-password"
+        .field__guide
+          ＊ 半角英数字７文字以上で設定して下さい
+        .field__label
+          .name
+            = f.label :password_confirmation
+          .required
+            必須
+        .field__input
+          = f.password_field :password_confirmation, autocomplete: "off", placeholder: "もう一度入力して下さい", class: "textbox", id: "js-password_confirmation"
+        %p
+          = check_box_tag :passcheck
+          = f.label "パスワードを表示する", class: "field__guide"
+        .actions
+          = f.submit "登録", class: "submit-btn"
+
