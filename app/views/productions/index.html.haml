@@ -1,5 +1,17 @@
 .wrapper
   = render 'header'
+  %h1 カテゴリー一覧
+  %ul.categories
+    - @parents.each do |parent|
+      %li.parents= link_to "#{parent.name}", root_path(parent)
+
+      %ul.categories__children
+        - parent.children.each do |child|
+          %li.childern= link_to "#{child.name}", root_path(child)
+
+          %ul.categories__grandchildren
+            - child.children.each do |grandchild|
+              %li= link_to "#{grandchild.name}", root_path(grandchild)
   = render 'midle'
   = render 'list'
   = render 'footer'
