@@ -1,0 +1,139 @@
+.list__box{
+    display: flex;
+    background-color: #f8f8f8;
+    &__contents{
+      width: 100%;
+      min-width: 480px;
+      padding: 60px 300px;
+      align-items: center;
+      &__title{
+        min-width: 480px;
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.4;
+        font-weight: bold;
+        position: relative;
+      }
+      &__subtitle{
+        .subtitle{
+          min-width: 480px;
+          text-align: center;
+          font-size: 26px;
+          line-height: 1.4;
+          font-weight: bold;
+          position: relative;
+          color: #3CCACE;
+          margin: 0;
+        }
+      }
+      &__cardList{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        min-width: 480px;
+        margin-right: 5%;
+        &--card{
+         
+          width: 30%;
+          margin-right: 10px;
+          position: relative;
+          &:hover{
+            opacity: 0.8;
+          }
+          .card{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+          .name{
+            font-weight: normal;
+          }
+          .price{
+            margin: 0;
+            position: absolute;
+          }
+          .likes{
+            margin: 0;
+            position: relative;
+            left: calc(100% - 26px);
+          }
+          .tax{
+            margin: 0;
+            font-size: 5px;
+          }
+        }
+      }
+    }
+  }
+  .lists__boxi{
+    display: flex;
+    background-color: #f8f8f8;
+    &__contents{
+      width: 100%;
+      min-width: 480px;
+      padding: 60px 300px;
+      align-items: center;
+      &__title{
+        min-width: 480px;
+        text-align: center;
+        font-size: 26px;
+        line-height: 1.4;
+        font-weight: bold;
+        position: relative;
+      }
+      &__subtitle{
+        .subtitle{
+          min-width: 480px;
+          text-align: center;
+          font-size: 26px;
+          line-height: 1.4;
+          font-weight: bold;
+          position: relative;
+          color: #3CCACE;
+          margin: 0;
+        }
+      }
+      &__cardList{
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        min-width: 480px;
+        margin-right: 5%;
+        &--card{
+          &:hover{
+            opacity: 0.8;
+            cursor: pointer;
+          }
+         
+          width: 30%;
+          margin-right: 10px;
+          position: relative;
+          .card{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+          }
+          .name{
+            font-weight: normal;
+          }
+          .price{
+            margin: 0;
+            position: absolute;
+          }
+          .likes{
+            margin: 0;
+            position: relative;
+            left: calc(100% - 26px);
+          }
+          .tax{
+            margin: 0;
+            font-size: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .title{
+    font-weight: bold;
+  }

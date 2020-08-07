@@ -1,22 +1,5 @@
-%h1 トップページ
-- if user_signed_in?
-  %h2 ログインしています
-  = link_to "ログアウト", destroy_user_session_path, method: :delete
-- else
-  %h2 ログインしていません
-  = link_to "新規登録", new_user_registration_path
-  = link_to "ログイン", new_user_session_path
-
-
-%h1 カテゴリー一覧
-%ul.categories
-  - @parents.each do |parent|
-    %li.parents= link_to "#{parent.name}", root_path(parent)
-
-    %ul.categories__children
-      - parent.children.each do |child|
-        %li.childern= link_to "#{child.name}", root_path(child)
-
-        %ul.categories__grandchildren
-          - child.children.each do |grandchild|
-            %li= link_to "#{grandchild.name}", root_path(grandchild)
+.wrapper
+  = render 'header'
+  = render 'midle'
+  = render 'list'
+  = render 'footer'
