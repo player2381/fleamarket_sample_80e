@@ -1,4 +1,6 @@
 class ProductionsController < ApplicationController
-    def index
-    end
+  
+ 　def index
+    @parents = Category.where(ancestry: nil)
   end
+end
