@@ -1,0 +1,210 @@
+.create-one{
+    width: 100%;
+    height: 560px;
+    background-image: image-url("bg-mainVisual-pict_pc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top center;
+    position: relative;
+    padding: 0 60px;
+    display: flex;
+    align-items: center;
+    &__body-main{
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 35px 0 0 0;
+      height: 336.33px;
+      &--top{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 60px;
+        line-height: 1.2;
+        color: #fff;
+      }
+      &--middle{
+        text-shadow: 0 0 5px rgba(0,0,0,0.4);
+        font-size: 18px;
+        color: #fff;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
+      }
+      &--btn{
+        display: flex;
+        margin: 24px 0 0 0;
+  
+      }
+    }
+  }
+  
+  
+  
+  
+  
+  .topIntroduction {
+    padding: 60px 20px;
+    .subtitle {
+      text-align: center;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+    }
+    .lists {
+      text-align: center;
+      display: flex;
+      width: 100%;
+      max-width: 1020px;
+      margin: 0 auto;
+      .list {
+        width: 30%;
+        margin: 16px 5% 0 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        .list__pict {
+          position: relative;
+          margin-bottom: 20px;
+          .number {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 30px;
+            margin: 0 5px 0 0;
+            padding: 10px 20px ;
+            background-color: #3CCACE;
+            color: #ffffff;
+          }
+          .pic {
+            width: 100%;
+            vertical-align: bottom;
+          }
+        }
+        .list__text {
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 50px;
+          margin: 0 0 0 2;
+          .text {
+            color: #3CCACE;
+          }
+        }
+        .description {
+          font-size: 18px;
+          margin-top: 16px;
+          line-height: 1.5;
+        }
+      }
+      .list.list--last {
+        margin: 16px 0 0;
+      }
+    }
+  }
+  
+  
+  .block {
+    background-image: image-url("bg-topMiddleDl-pict.jpg");
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    
+    text-shadow: 0 0 5px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    &__in-box {
+      max-width: 1040px;
+      width: 100%;
+      margin: 0 auto;
+      &__title {
+        font-size: 27px;
+        font-weight: bold;
+        color: white;
+      }
+      &__text{
+        font-size: 18px;
+        margin: 20px 0;
+        color: white;
+      }
+    }
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  
+  .containerFeatures{
+    padding: 60px 100px;
+    background-color: white;
+    .head__title{
+      font-size: 27px;
+      text-align: center;
+      margin: 0 0 40px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+      &::after{
+        content: "";
+        width: 70px;
+        height: 4px;
+        
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%);
+      }
+    }
+    &__items{
+      max-width: calc(1040px + 20px);
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      &__list{
+        display: flex;
+        flex-direction: column;
+        width: calc(1 / 3 * 100%);
+        text-align: center;
+        .containerFeatures__images{
+          width: 70%;
+          margin: 0 auto;
+          line-height: 120px;
+          &__image{
+            width: 100%;
+            vertical-align: bottom;
+          }
+        }
+        .item__subtitle{
+          margin: 38px 0 10px;
+          font-size: 19px;
+          font-weight: bold;
+        }
+        .item__detail{
+          margin: 0 0 40px;
+          font-size: 17px;
+          font-weight: 200;
+          text-align: left;
+        }
+      }
+    }
+  }
+  
+  
+  .appBtn:hover,.googleBtn:hover {
+    opacity: 0.5 ;
+  }
+  
+  .appBtn{
+    width: 150px;
+    margin: 13px;
+  }
+  
+  .googleBtn{
+    width: 180px;
+  }
+  
+  

@@ -1,0 +1,14 @@
+.serch-pcheader
+  .headerInner
+    .mainHeader
+      .icon
+        = link_to root_path do
+          = image_tag ("logo.png")
+      .searchBox
+        = form_with(url: "#", local: true, method: :get, class: "form") do |form|
+          = form.text_field :keyword, placeholder: "キーワードから探す", class: "searchBox-input"
+          = button_tag type: 'submit', class: 'search-btn' do
+            = image_tag "icon-search 1.png", class: "search-img"
+
+
+    
