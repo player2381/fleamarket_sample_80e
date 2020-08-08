@@ -68,5 +68,8 @@ end
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'devise'
-
 gem 'ancestry'
+
+gem 'payjp'
+gem 'dotenv'
+gem "jquery-rails"

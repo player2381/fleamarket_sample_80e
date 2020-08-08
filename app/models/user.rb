@@ -7,4 +7,6 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   has_one :address
+  has_one :card
+  has_many :customer
 end
