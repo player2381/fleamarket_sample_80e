@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :card, only: [:new, :create, :show] do
+    collection do
+      post 'show', to: 'card#show'
+      post 'pay', to: 'card#pay'
+      post 'delete', to: 'card#delete'
+    end
+  end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -7,6 +15,6 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root to:'productions#index'
-  
+  resources :users, only: [:show]
 end
 

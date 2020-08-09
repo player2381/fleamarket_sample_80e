@@ -41,6 +41,10 @@
         %p
           = check_box_tag :passcheck
           = f.label "パスワードを表示する", class: "field__guide"
+        .field
+          = f.label :birth_date
+          %br/
+          = f.date_select :birth_date, use_month_numbers: true, start_year: 1930, end_year: (Time.now.year - 10), default: Date.new(1989, 1, 1)
         .actions
           = f.submit "お届け先情報登録へ", class: "submit-btn"
 

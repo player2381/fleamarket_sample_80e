@@ -36,7 +36,7 @@
           }
   
           button{
-       
+            background-color: white;
             width: 36px;
             border: 0;
             cursor: pointer;
@@ -55,30 +55,82 @@
 }
 
 .headerInner__nav{
-    display: flex;
-    margin-bottom: 8px;
-    .list-left{
-      position: relative;
-      display: flex;
-      padding-top: 5px;
-      .btn{
-        text-decoration: none;
-        color: #333333;
-        margin-right: 45px;
-        font-size: 14px;
-      }
-      .btn:hover{
-        color: #FFB340;
-      }
+  width: 100%;
+  padding: 5px 0 15px;
+  a{
+    color: #333;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__leftBox{
+    li a {
+      background-color: white;
+      margin: 0;
+      padding: 0;
+      width: 200px;
+      display: block;
     }
-    .list-right{
-      margin-left: auto;
+    &__list{
       display: flex;
-      .right-btn{
-        text-decoration: none;
-        color: #333333;
-        margin-left: 20px;
-        font-size: 14px;
+      justify-content: space-between;
+      &__categoryMenu{
+        &:hover .headerInner__nav__leftBox__list__categoryMenu__secondLevel{
+          visibility: visible;
+          opacity: 1;
+        }
+        &__secondLevel{
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          z-index: 10;
+          &--list{
+            &:hover .headerInner__nav__leftBox__list__categoryMenu__thirdLevel{
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+        }
+        &__thirdLevel{
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 100%;
+          &--list{
+            &:hover .headerInner__nav__leftBox__list__categoryMenu__fourthLevel{
+              visibility: visible;
+              opacity: 1;
+            }
+          }
+        }
+        &__fourthLevel{
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          left: 100%;
+        }
+      }
+      &__brand{
+        &:hover .headerInner__nav__leftBox__list__brand__secondLevel{
+          visibility: visible;
+          opacity: 1;
+        }
+        &__secondLevel{
+          visibility: hidden;
+          opacity: 0;
+          position: absolute;
+        }
       }
     }
   }
+  &__rightBox{
+    &__list{
+      display: flex;
+      li{
+        margin-left: 10px;
+      }
+    }
+  }
+}

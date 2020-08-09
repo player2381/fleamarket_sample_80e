@@ -12,7 +12,6 @@
 
 
     .headerInner__nav
-<<<<<<< Updated upstream
       %ul.list-left
         %li.list-left__category-list
           = link_to "#", class: "btn" do
@@ -36,7 +35,7 @@
           %li.list-right__sign-up
             = link_to new_user_registration_path, class: "right-btn",data: {"turbolinks" => false}  do
               新規会員登録
-=======
+
       .headerInner__nav__leftBox
         %ul.headerInner__nav__leftBox__list
           %li.headerInner__nav__leftBox__list__categoryMenu
@@ -54,7 +53,7 @@
                           - child.children.each do |grandchild|
                             %li.headerInner__nav__leftBox__list__categoryMenu__fourthLevel--list
                               = link_to grandchild.name, root_path
-      
+                              
       .headerInner__nav__rightBox
         %ul.headerInner__nav__rightBox__list
           - if !current_user
@@ -67,4 +66,3 @@
               = link_to "ログアウト", destroy_user_session_path, method: :delete
             %li.headerInner__nav__rightBox__list--myPage
               = link_to "マイページ", user_path(current_user[:id])
->>>>>>> Stashed changes
