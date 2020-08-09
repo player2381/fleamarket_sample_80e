@@ -1,6 +1,6 @@
 class CardController < ApplicationController
 
-  require "payjp"
+  
 
   def new
     card = Card.where(user_id: current_user.id)
@@ -8,8 +8,11 @@ class CardController < ApplicationController
   end
 
   def create
+    
     redirect_to ("/card/index")
   end
+
+  require "payjp"
 
   def pay #payjpとCardのデータベース作成を実施します。
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
