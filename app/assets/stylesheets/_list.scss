@@ -44,22 +44,21 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            padding-top: 15px;
           }
           .name{
             font-weight: normal;
+            padding-left: 100px;
           }
           .price{
             margin: 0;
             position: absolute;
-          }
-          .likes{
-            margin: 0;
-            position: relative;
-            left: calc(100% - 26px);
+            padding-left: 130px;
           }
           .tax{
             margin: 0;
             font-size: 5px;
+            padding: 22px 0 0 135px;
           }
         }
       }
@@ -119,11 +118,6 @@
           .price{
             margin: 0;
             position: absolute;
-          }
-          .likes{
-            margin: 0;
-            position: relative;
-            left: calc(100% - 26px);
           }
           .tax{
             margin: 0;
