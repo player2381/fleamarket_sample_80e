@@ -12,6 +12,7 @@
 
 
     .headerInner__nav
+<<<<<<< Updated upstream
       %ul.list-left
         %li.list-left__category-list
           = link_to "#", class: "btn" do
@@ -35,3 +36,35 @@
           %li.list-right__sign-up
             = link_to new_user_registration_path, class: "right-btn",data: {"turbolinks" => false}  do
               新規会員登録
+=======
+      .headerInner__nav__leftBox
+        %ul.headerInner__nav__leftBox__list
+          %li.headerInner__nav__leftBox__list__categoryMenu
+            = link_to "カテゴリー", root_path
+
+            %ul.headerInner__nav__leftBox__list__categoryMenu__secondLevel
+              - Category.roots.each do |parent|
+                %li.headerInner__nav__leftBox__list__categoryMenu__secondLevel--list
+                  = link_to parent.name, root_path
+                  %ul.headerInner__nav__leftBox__list__categoryMenu__thirdLevel
+                    - parent.children.each do |child|
+                      %li.headerInner__nav__leftBox__list__categoryMenu__thirdLevel--list
+                        = link_to child.name, root_path
+                        %ul.headerInner__nav__leftBox__list__categoryMenu__fourthLevel
+                          - child.children.each do |grandchild|
+                            %li.headerInner__nav__leftBox__list__categoryMenu__fourthLevel--list
+                              = link_to grandchild.name, root_path
+      
+      .headerInner__nav__rightBox
+        %ul.headerInner__nav__rightBox__list
+          - if !current_user
+            %li.headerInner__nav__rightBox__list--login
+              = link_to "ログイン", new_user_session_path
+            %li.headerInner__nav__rightBox__list--registration
+              = link_to "新規会員登録", new_user_registration_path
+          - else
+            %li.headerInner__nav__rightBox__list--logout
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+            %li.headerInner__nav__rightBox__list--myPage
+              = link_to "マイページ", user_path(current_user[:id])
+>>>>>>> Stashed changes
