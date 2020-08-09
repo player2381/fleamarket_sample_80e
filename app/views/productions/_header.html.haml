@@ -12,26 +12,32 @@
 
 
     .headerInner__nav
-      %ul.list-left
-        %li.list-left__category-list
-          = link_to "#", class: "btn" do
-            カテゴリー
-        %li.list-left__brand-list
-          = link_to "#", class: "btn" do
-            ブランド
-      - if user_signed_in?
-        %ul.list-right
-          %li.list-right__log-in
-            = link_to user_path(current_user.id), data: {"turbolinks" => false}, class: "right-btn" do
-              マイページ
-          %li.user__right__log-in
-            = link_to destroy_user_session_path, method: :delete, class: "right-btn"  do
-              ログアウト
-      - else
-        %ul.list-right
-          %li.list-right__log-in
-            = link_to new_user_session_path, class: "right-btn" do
-              ログイン
-          %li.list-right__sign-up
-            = link_to new_user_registration_path, class: "right-btn",data: {"turbolinks" => false}  do
-              新規会員登録
+      .headerInner__nav__leftBox
+        %ul.headerInner__nav__leftBox__list
+          %li.headerInner__nav__leftBox__list__categoryMenu
+            = link_to "カテゴリー", root_path
+
+            %ul.headerInner__nav__leftBox__list__categoryMenu__secondLevel
+              - @parents.each do |parent|
+                %li.headerInner__nav__leftBox__list__categoryMenu__secondLevel--list
+                  = link_to parent.name, root_path
+                  %ul.headerInner__nav__leftBox__list__categoryMenu__thirdLevel
+                    - parent.children.each do |child|
+                      %li.headerInner__nav__leftBox__list__categoryMenu__thirdLevel--list
+                        = link_to child.name, root_path
+                        %ul.headerInner__nav__leftBox__list__categoryMenu__fourthLevel
+                          - child.children.each do |grandchild|
+                            %li.headerInner__nav__leftBox__list__categoryMenu__fourthLevel--list
+                              = link_to grandchild.name, root_path
+      .headerInner__nav__rightBox
+        %ul.headerInner__nav__rightBox__list
+          - if !current_user
+            %li.headerInner__nav__rightBox__list--login
+              = link_to "ログイン", new_user_session_path
+            %li.headerInner__nav__rightBox__list--registration
+              = link_to "新規会員登録", new_user_registration_path
+          - else
+            %li.headerInner__nav__rightBox__list--logout
+              = link_to "ログアウト", destroy_user_session_path, method: :delete
+            %li.headerInner__nav__rightBox__list--myPage
+              = link_to "マイページ", users_path(current_user.id)
