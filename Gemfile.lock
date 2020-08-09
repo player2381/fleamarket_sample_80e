@@ -106,7 +106,6 @@ GEM
       warden (~> 1.2.3)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.7.6)
     erb2haml (0.1.5)
       html2haml
     erubi (1.9.0)
@@ -310,7 +309,6 @@ DEPENDENCIES
   capistrano3-unicorn
   capybara (>= 2.15)
   devise
-  dotenv
   erb2haml
   haml-rails
   jbuilder (~> 2.7)
