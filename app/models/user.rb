@@ -8,5 +8,5 @@ class User < ApplicationRecord
 
   has_one :address
   has_one :card
-  has_many :customer
+  has_many :customers
 end
