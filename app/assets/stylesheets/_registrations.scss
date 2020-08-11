@@ -83,9 +83,17 @@
         &__input{
             display: flex;
           }
+        &__select {
+          display: flex;
+          justify-content: space-between;
+          select {
+            margin: 0 10px;
+          }
+        }
       }
     }
-  
+
+
     .textbox{
         display: block;
         height: 40px;
