@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   root to:'productions#index'
   resources :users, only: [:show]
 
-  resources :productions, only: [:new]
+  resources :productions, only: [:index, :new, :show]
 end
 
