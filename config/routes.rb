@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
   
-    # collection do
-    #   post 'show', to: 'card#show'
-    #   post 'pay', to: 'card#pay'
-    #   post 'delete', to: 'card#delete'
-    # end 
-
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -15,6 +9,7 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
+  resources :productions, only: [:index, :new, :show]
   resources :users, only: [:show] do
     resources :cards
   end
