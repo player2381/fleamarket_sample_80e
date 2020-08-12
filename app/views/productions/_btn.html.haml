@@ -1,4 +1,5 @@
 .btn
-  .btn__display
-    %span 出品する
-    = image_tag("icon_camera.png", alt: "camera")
+  = link_to new_production_path, data: {"turbolinks" => false} do
+    .btn__display
+      %span 出品する
+      = image_tag("icon_camera.png", alt: "camera")

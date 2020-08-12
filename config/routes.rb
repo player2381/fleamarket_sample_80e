@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
+  resources :productions, only: [:index, :new, :show]
   resources :users, only: [:show] do
     resources :cards
   end
