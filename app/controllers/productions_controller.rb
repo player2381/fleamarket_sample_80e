@@ -1,7 +1,9 @@
 class ProductionsController < ApplicationController
-  
+
   def index
-    
+  end
+
+  def show
   end
 
   def new
@@ -15,16 +17,24 @@ class ProductionsController < ApplicationController
     charge = Payjp::Charge.create(
     amount: @production.price,
     card: params['payjp-token'],
-    currency: 'jpy'
+    currency: 'jpy',
     )
+    redirect_to root_path, notice: "支払いが完了しました"
   end
+
+  private
+
 
   def production_params
     params.require(:production).permit(
       :name,
-      :text,
       :price,
-      #この辺の他コードは関係ない部分なので省略してます
+      :introduction,
+      :size,
+      :shipping_charge,
+      :prefecture_code,
+      :detail_date,
+      :trading_status,
     ).merge(user_id: current_user.id)
   end
 end
