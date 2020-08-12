@@ -9,5 +9,4 @@ class User < ApplicationRecord
   has_one :address
   has_one :card
   has_many :productions
-  # has_many :customers
 end

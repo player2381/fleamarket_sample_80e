@@ -10,16 +10,15 @@ class CardsController < ApplicationController
 
   def create
     Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-    # binding.pry
     if params['payjp-token'].blank?
-      puts "ok"
-      # redirect_to action: "user"多分new
+      
+      redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
-        description: 'test', # 無くてもOK。PAY.JPの顧客情報に表示する概要です。
+        description: 'test',
         email: current_user.email,
-        card: params['payjp-token'], # 直前のnewアクションで発行され、送られてくるトークンをここで顧客に紐付けて永久保存します。
-        metadata: {user_id: current_user.id} # 無くてもOK。
+        card: params['payjp-token'],
+        metadata: {user_id: current_user.id}
       )
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
