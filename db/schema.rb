@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2020_08_07_085729) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "customer_id"
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_cards_on_customer_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
@@ -53,20 +53,14 @@ ActiveRecord::Schema.define(version: 2020_08_07_085729) do
   end
 
   create_table "productions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "user_id", null: false
-    t.string "namestring", null: false
-    t.integer "category_id", null: false
-    t.integer "brand_id", null: false
+    t.string "name", null: false
     t.string "price", null: false
     t.text "introduction", null: false
-    t.string "production_status", null: false
     t.string "size", null: false
     t.string "shipping_charge", null: false
     t.integer "prefecture_code", null: false
-    t.string "shipping_method", null: false
     t.string "detail_date", null: false
     t.string "trading_status", null: false
-    t.integer "production_img_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

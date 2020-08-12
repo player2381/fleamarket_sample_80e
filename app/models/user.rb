@@ -8,5 +8,6 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   has_one :address
   has_one :card
-  has_many :customers
+  has_many :productions
+  # has_many :customers
 end
