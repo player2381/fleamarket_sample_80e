@@ -72,4 +72,4 @@ gem 'ancestry'
 
 gem 'payjp'
 
-gem "jquery-rails"
+gem 'jquery-rails'
