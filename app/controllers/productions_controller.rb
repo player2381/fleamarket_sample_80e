@@ -1,7 +1,10 @@
 class ProductionsController < ApplicationController
-  
+
   def index
     @productions = Production.includes(:images).order('created_at DESC')
+  end
+
+  def show
   end
 
   def new
@@ -35,15 +38,15 @@ class ProductionsController < ApplicationController
     charge = Payjp::Charge.create(
     amount: @production.price,
     card: params['payjp-token'],
-    currency: 'jpy'
+    currency: 'jpy',
     )
+    redirect_to root_path, notice: "支払いが完了しました"
   end
 
   private
 
   def production_params
     params.require(:production).permit(
-      # :category,
       :category_id,
       :name,
       :price,
@@ -55,7 +58,7 @@ class ProductionsController < ApplicationController
       :trading_status,
       images_attributes: [:src])
       .merge(user_id: current_user.id)
-      #この辺の他コードは関係ない部分なので省略してます
+      
   end
 
 end

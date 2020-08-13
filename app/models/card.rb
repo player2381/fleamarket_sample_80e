@@ -1,6 +1,4 @@
 class Card < ApplicationRecord
   belongs_to :user
-  belongs_to :customer
-
-  # validates :user_id, :customer_id, presence: true, uniqueness: true
+  # belongs_to :customerユーザーに紐づけられてるのでいらない？？
 end
