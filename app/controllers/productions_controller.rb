@@ -35,6 +35,7 @@ class ProductionsController < ApplicationController
   end
 
 
+
   def production_params
     params.require(:production).permit(
       :category_id,
@@ -52,6 +53,8 @@ class ProductionsController < ApplicationController
   end
 
 
+
 end
+
 
 
