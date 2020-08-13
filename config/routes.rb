@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
-  resources :productions, only: [:index, :new, :show]
-  resources :users, only: [:show] do
-    resources :cards
+  resources :productions do
+    collection do
+      get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
+      get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
+    end
+
   end
 end
