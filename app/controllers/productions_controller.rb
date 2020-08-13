@@ -28,6 +28,7 @@ class ProductionsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def update
@@ -51,5 +52,9 @@ class ProductionsController < ApplicationController
       
   end
 
+
+
 end
+
+
 
