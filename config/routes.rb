@@ -17,6 +17,11 @@ Rails.application.routes.draw do
   root to:'productions#index'
   resources :users, only: [:show]
 
-  resources :productions, only: [:new]
+  resources :productions do
+    collection do
+      get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
+      get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
+    end
+  end
 end
 
