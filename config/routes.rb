@@ -11,7 +11,18 @@ Rails.application.routes.draw do
 
   resources :productions, only: [:index, :new, :show]
   resources :users, only: [:show] do
-    resources :cards
+    
+  end
+  resources :cards do
+    collection do
+      #payjpでトークン化を行う
+      post 'pay', to: 'cards#pay'
+      #カード削除
+      # post 'destroy', to: 'cards#destroy'
+      #カード情報入力
+      # post 'show', to: 'cards#show'
+    end
   end
 end
+
 
