@@ -9,20 +9,29 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
-  resources :productions, only: [:index, :new, :show]
-  resources :users, only: [:show] do
+
     
-  end
-  resources :cards do
-    collection do
-      #payjpでトークン化を行う
-      post 'pay', to: 'cards#pay'
-      #カード削除
-      # post 'destroy', to: 'cards#destroy'
-      #カード情報入力
-      # post 'show', to: 'cards#show'
-    end
+
+resources :cards do
+  collection do
+    #payjpでトークン化を行う
+    post 'pay', to: 'cards#pay'
+    #カード削除
+    # post 'destroy', to: 'cards#destroy'
+    #カード情報入力
+    # post 'show', to: 'cards#show'
   end
 end
 
+
+
+  resources :users, only: [:show]
+
+  resources :productions do
+    collection do
+      get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
+      get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
+    end
+
+  end
 
