@@ -28,11 +28,11 @@ class ProductionsController < ApplicationController
     else
       render :new
     end
+
   end
 
   def update
   end
-
 
 
   def production_params
@@ -51,5 +51,7 @@ class ProductionsController < ApplicationController
       
   end
 
+
 end
+
 
