@@ -5,22 +5,34 @@
     .list__box__contents__subtitle
       %h3.subtitle 新規投稿商品
     %ul.list__box__contents__cardList
-      %li.list__box__contents__cardList--card
-        = link_to image_tag("ball.png", class: "card")
-        %h3.name サッカーボール
-        = link_to "サッカー", production_path(:id)
-        %p.price 2000円
-        %p.tax (税込み)
+      - @productions.each do |production|
+        %li.list__box__contents__cardList--card
+          = link_to production_path(id: production.id, class: "card") do
+            = image_tag production.images.first.src.url
+            %h3.name
+              = production.name
+            %p.price
+              = production.price
+              = "円"
+
+
+
           
 .lists__boxi
   .lists__boxi__contents
     .lists__boxi__contents__title
       %h2.title ピックアップブランド
-    .lists__boxi__contents__subtitle
+    .list__box__contents__subtitle
       %h3.subtitle アーカイバ
-    %ul.lists__boxi__contents__cardList      
-      %li.list__box__contents__cardList--card
-        = link_to image_tag("ball.png", class: "card")
-        %h3.name サッカーボール
-        %p.price 2000円
-        %p.tax (税込み)
+    %ul.list__box__contents__cardList
+      - @productions.each do |production|
+        %li.list__box__contents__cardList--card
+          = link_to production_path(id: production.id, class: "card") do
+            = image_tag production.images.first.src.url
+            %h3.name
+              = production.name
+            %p.price
+              = production.price
+              = "円"
+            
+          
