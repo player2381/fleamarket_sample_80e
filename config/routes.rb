@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
+  resources :users, only: [:show]
+
   resources :productions do
     collection do
       get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
