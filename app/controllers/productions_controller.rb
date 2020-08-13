@@ -33,17 +33,7 @@ class ProductionsController < ApplicationController
   def update
   end
 
-  def pay
-    Payjp.api_key = ENV['PAYJP_PRIVATE_KEY']
-    charge = Payjp::Charge.create(
-    amount: @production.price,
-    card: params['payjp-token'],
-    currency: 'jpy',
-    )
-    redirect_to root_path, notice: "支払いが完了しました"
-  end
 
-  private
 
   def production_params
     params.require(:production).permit(
@@ -62,3 +52,4 @@ class ProductionsController < ApplicationController
   end
 
 end
+

@@ -9,7 +9,6 @@ document.addEventListener(
 
     if (document.getElementById("token_submit") != null) {
       Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
-      
       let btn = document.getElementById("token_submit");
       btn.addEventListener("click", e => {
         e.preventDefault();
@@ -34,6 +33,7 @@ document.addEventListener(
           } else {
             alert("カード情報が正しくありません。"); //確認用
         };
+
         
         Payjp.createToken(card, (status, response) => {
           if (status === 200) {

@@ -9,6 +9,22 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
+
+    
+
+resources :cards do
+  collection do
+    #payjpでトークン化を行う
+    post 'pay', to: 'cards#pay'
+    #カード削除
+    # post 'destroy', to: 'cards#destroy'
+    #カード情報入力
+    # post 'show', to: 'cards#show'
+  end
+end
+
+
+
   resources :users, only: [:show]
 
   resources :productions do
@@ -18,4 +34,4 @@ Rails.application.routes.draw do
     end
 
   end
-end
+

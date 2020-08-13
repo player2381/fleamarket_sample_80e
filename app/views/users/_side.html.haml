@@ -57,6 +57,20 @@
     = link_to '#', class: 'left-content__list-item' do
       発送先・お届け先住所変更
       %i.fa.fa-angle-right
+
+  - if @card.present?
+    %li
+      = link_to card_path(@card.id),class: 'left-content__list-item' do
+        カード情報
+        %i.fa.fa-angle-right
+    
+  - else
+    %li
+      = link_to new_card_path, class: 'left-content__list-item',"data-turbolinks": false do
+        カード登録
+        %i.fa.fa-angle-right
+      
+
   %li
     = link_to '#', class: 'left-content__list-item' do
       メール/パスワード
