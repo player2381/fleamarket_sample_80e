@@ -40,7 +40,10 @@ class ProductionsController < ApplicationController
     else
       render :edit
     end
-  end
+
+
+
+
 
 
 
@@ -50,6 +53,7 @@ class ProductionsController < ApplicationController
     else
       render :new
   end
+
 
 
   private
@@ -68,8 +72,6 @@ class ProductionsController < ApplicationController
     images_attributes: [:src, :_destroy, :id])
     .merge(user_id: current_user.id)
   end
-
-
 
 
 end

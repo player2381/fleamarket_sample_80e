@@ -18,10 +18,6 @@ Rails.application.routes.draw do
     collection do
       #payjpでトークン化を行う
       post 'pay', to: 'cards#pay'
-      #カード削除
-      # post 'destroy', to: 'cards#destroy'
-      #カード情報入力
-      # post 'show', to: 'cards#show'
     end
   end
 
@@ -38,9 +34,7 @@ Rails.application.routes.draw do
 
   resources :purchase, only: [:index] do
     collection do
-      get 'index', to: 'purchase#index'
       post 'pay', to: 'purchase#pay'
-      # get 'done', to: 'purchase#done'
     end
   end
 end
