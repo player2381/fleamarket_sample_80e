@@ -1,6 +1,5 @@
 class ProductionsController < ApplicationController
 
-  # before_action :set_product, except: [:index, :new, :create]
 
   def index
     @productions = Production.includes(:images).order('created_at DESC')
@@ -54,8 +53,6 @@ class ProductionsController < ApplicationController
       .merge(user_id: current_user.id)
       
   end
-
-
 
 
 end
