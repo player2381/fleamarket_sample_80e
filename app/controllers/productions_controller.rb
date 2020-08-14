@@ -1,11 +1,13 @@
 class ProductionsController < ApplicationController
 
 
+
   def index
     @productions = Production.includes(:images).order('created_at DESC')
   end
 
   def show
+    @production = Production.find(params[:id])
   end
 
   def new
@@ -41,12 +43,14 @@ class ProductionsController < ApplicationController
   end
 
 
+
   def destroy
     if @production.destroy
       redirect_to root_path
     else
       render :new
   end
+
 
   private
 
@@ -66,6 +70,9 @@ class ProductionsController < ApplicationController
   end
 
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
 end
 

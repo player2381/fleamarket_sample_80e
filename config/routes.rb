@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'purchase/index'
+  get 'purchase/done'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
   }
@@ -12,16 +14,16 @@ Rails.application.routes.draw do
 
     
 
-resources :cards do
-  collection do
-    #payjpでトークン化を行う
-    post 'pay', to: 'cards#pay'
-    #カード削除
-    # post 'destroy', to: 'cards#destroy'
-    #カード情報入力
-    # post 'show', to: 'cards#show'
+  resources :cards do
+    collection do
+      #payjpでトークン化を行う
+      post 'pay', to: 'cards#pay'
+      #カード削除
+      # post 'destroy', to: 'cards#destroy'
+      #カード情報入力
+      # post 'show', to: 'cards#show'
+    end
   end
-end
 
 
 
@@ -32,7 +34,14 @@ end
       get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
     end
+  end
 
+  resources :purchase, only: [:index] do
+    collection do
+      get 'index', to: 'purchase#index'
+      post 'pay', to: 'purchase#pay'
+      # get 'done', to: 'purchase#done'
+    end
   end
 end
 
