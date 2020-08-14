@@ -1,10 +1,13 @@
 class ProductionsController < ApplicationController
 
+  # before_action :set_product, except: [:index, :new, :create]
+
   def index
     @productions = Production.includes(:images).order('created_at DESC')
   end
 
   def show
+    @production = Production.find(params[:id])
   end
 
   def new
@@ -34,7 +37,7 @@ class ProductionsController < ApplicationController
   def update
   end
 
-
+  private
 
   def production_params
     params.require(:production).permit(
@@ -53,6 +56,9 @@ class ProductionsController < ApplicationController
   end
 
 
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
 end
 
