@@ -42,8 +42,10 @@ class ProductionsController < ApplicationController
 
 
   def destroy
-    @production.destroy
-    redirect_to root_path
+    if @production.destroy
+      redirect_to root_path
+    else
+      render :new
   end
 
   private
