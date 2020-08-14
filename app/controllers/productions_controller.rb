@@ -1,6 +1,6 @@
 class ProductionsController < ApplicationController
 
-  # before_action :set_product, except: [:index, :new, :create]
+
 
   def index
     @productions = Production.includes(:images).order('created_at DESC')
@@ -35,24 +35,38 @@ class ProductionsController < ApplicationController
   end
 
   def update
+    if @production.update(product_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
+
+
+
+  def destroy
+    if @production.destroy
+      redirect_to root_path
+    else
+      render :new
+  end
+
 
   private
 
   def production_params
     params.require(:production).permit(
-      :category_id,
-      :name,
-      :price,
-      :introduction,
-      :size,
-      :shipping_charge,
-      :prefecture_code,
-      :detail_date,
-      :trading_status,
-      images_attributes: [:src])
-      .merge(user_id: current_user.id)
-      
+    :category_id,
+    :name,
+    :price,
+    :introduction,
+    :size,
+    :shipping_charge,
+    :prefecture_code,
+    :detail_date,
+    :trading_status,
+    images_attributes: [:src, :_destroy, :id])
+    .merge(user_id: current_user.id)
   end
 
 
