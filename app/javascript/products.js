@@ -14,7 +14,6 @@ $(document).on('turbolinks:load', ()=> {
   
     // file_fieldのnameに動的なindexをつける為の配列
     let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-    console.log(fileIndex)
   
     $('#image-box').on('change', '.productions_new-js-file', function(e) {
       // fileIndexの先頭の数字を使ってinputを作る
