@@ -1,6 +1,7 @@
 class ProductionsController < ApplicationController
 
 
+
   def index
     @productions = Production.includes(:images).order('created_at DESC')
   end
@@ -39,7 +40,10 @@ class ProductionsController < ApplicationController
     else
       render :edit
     end
-  end
+
+
+
+
 
 
 
@@ -48,7 +52,10 @@ class ProductionsController < ApplicationController
       redirect_to root_path
     else
       render :new
+
   end
+
+
 
 
   private
