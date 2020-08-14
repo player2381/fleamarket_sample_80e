@@ -38,7 +38,6 @@ $(document).ready(function(){
       // 親はクラスのIDの方を選択してあげる
       $('#production_category').on('change', function(){
         var parent_category_id = document.getElementById('production_category').value; //選択された親カテゴリーの名前を取得
-        console.log(parent_category_id)
         if (parent_category_id != "選択してください"){ //親カテゴリーが初期値でないことを確認
           $.ajax({
             url: '/productions/category/get_category_children',
