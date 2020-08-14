@@ -13,6 +13,7 @@ document.addEventListener(
           exp_month: document.getElementById("exp_month").value,
           exp_year: document.getElementById("exp_year").value
         }; //入力されたデータを取得します。
+
         
         
 
@@ -31,6 +32,8 @@ document.addEventListener(
               console.log("ok")
           } else {
             alert("カード情報が正しくありません。");
+
+
           }
         });
       });

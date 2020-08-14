@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    $(function(){
-      function appendOption(category){
-        var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
-        return html;
-      }
-      // 子カテゴリーの表示作成
-      function appendChidrenBox(insertHTML){
+  $(function(){
+    function appendOption(category){
+      var html = `<option value="${category.id}" data-category="${category.id}">${category.name}</option>`;
+      return html;
+    }
+    // 子カテゴリーの表示作成
+    function appendChidrenBox(insertHTML){
         var childSelectHtml = '';
         childSelectHtml = `<div class='exhibitionPage__main__contents__detail__category__choose__added' id= 'children_wrapper'>
                             <div class='exhibitionPage__main__contents__detail__category__choose1'>
