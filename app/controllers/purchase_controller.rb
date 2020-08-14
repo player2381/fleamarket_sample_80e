@@ -2,7 +2,7 @@ class PurchaseController < ApplicationController
   
   require 'payjp'
   
-  before_action :set_where, only: [:index, :pay]
+  before_action :set_set, only: [:index, :pay]
   
   def index
     if card.blank?
@@ -33,7 +33,7 @@ class PurchaseController < ApplicationController
 
   private
 
-  def set_where
+  def set_card
     card = Card.where(user_id: current_user.id).first
   end
 end
