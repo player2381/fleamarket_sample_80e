@@ -61,9 +61,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_044715) do
   end
 
   create_table "productions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
     t.string "name", null: false
-    t.integer "category_id", null: false
     t.string "price", null: false
     t.text "introduction", null: false
     t.string "size", null: false
@@ -73,7 +71,6 @@ ActiveRecord::Schema.define(version: 2020_08_11_044715) do
     t.string "trading_status", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_productions_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
