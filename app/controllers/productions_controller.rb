@@ -18,10 +18,10 @@ class ProductionsController < ApplicationController
 
   def get_category_children
     @category_children = Category.find(params[:parent_id]).children
-    end
+  end
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
-    end
+  end
 
   def create
     
@@ -75,9 +75,6 @@ class ProductionsController < ApplicationController
     images_attributes: [:src, :_destroy, :id])
     .merge(user_id: current_user.id)
   end
-
-
 end
-
 
 
