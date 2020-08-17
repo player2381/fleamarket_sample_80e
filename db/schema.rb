@@ -64,11 +64,11 @@ ActiveRecord::Schema.define(version: 2020_08_11_044715) do
     t.bigint "user_id"
     t.string "name", null: false
     t.integer "category_id", null: false
-    t.string "price", null: false
+    t.integer "price", null: false
     t.text "introduction", null: false
     t.string "size", null: false
     t.string "shipping_charge", null: false
-    t.integer "prefecture_code", null: false
+    t.string "prefecture_code", null: false
     t.string "detail_date", null: false
     t.string "trading_status", null: false
     t.datetime "created_at", precision: 6, null: false
