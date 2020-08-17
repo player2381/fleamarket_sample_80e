@@ -36,6 +36,18 @@ class ProductionsController < ApplicationController
   def update
   end
 
+  def payment
+    @production = Production.find(params[:id])
+  end
+
+  def sold
+    @production = Production.find(params[:id])
+    @production.update(status: 1)
+    @production.save
+      flash[:success] = "購入しました。"
+    redirect_to ("/") and return
+  end
+
   private
 
   def production_params

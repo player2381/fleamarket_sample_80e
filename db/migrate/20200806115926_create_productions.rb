@@ -5,9 +5,10 @@ class CreateProductions < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.integer :category_id, null: false
       # t.integer :brand_id, null: false, foreign_key: true
-      t.string :price, null: false
+      t.integer :price, null: false
       t.text :introduction, null: false
-      # t.string :production_status, null: false
+      t.references :purchaser, forign_key: true
+      t.integer :status
       t.string :size, null: false
       t.string :shipping_charge, null: false
       t.integer :prefecture_code, null: false
