@@ -1,10 +1,11 @@
 class PurchaseController < ApplicationController
   
   require 'payjp'
-  
+
 
   def index
     @production = Production.find(params[:production_id]) 
+
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
@@ -31,6 +32,7 @@ class PurchaseController < ApplicationController
     @production.update(purchaser_id: current_user.id)
     redirect_to root_path
     flash[:sucess] = "購入が完了しました"
+
 
   end
 

@@ -1,13 +1,7 @@
 %h2 購入を確定しますか？
--# = form_with model: @production, url: pay_purchase_index_path, method: :post do |f|
--# - @production.each do |production|
--#   = production.name
--#   = production.price
 = @production.name
 = @production.price
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
-%br
+
 %h3 支払い方法
 - if @card.blank?
   %br /
