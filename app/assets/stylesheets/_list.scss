@@ -46,6 +46,7 @@
             object-fit: cover;
             padding-top: 15px;
             position: relative;
+
           }
           .name{
             font-weight: normal;
@@ -137,14 +138,13 @@
   .items-box_photo__sold{
     width: 0;
     height: 0;
-    border-top: 60px solid #ea352d ;
+    border-top: 60px solid #EA352D ;
     border-right: 60px solid transparent;
     border-bottom: 60px solid transparent;
-    border-left: 60px solid #ea352d ;
+    border-left: 60px solid #EA352D ;
     z-index:100;
-    position: relative;
-    top:-305px;
-    
+    position: absolute;
+    top:-1px;
     &__inner{
       transform: rotate(-45deg);
       font-size: 28px;
