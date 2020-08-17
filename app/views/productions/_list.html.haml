@@ -6,9 +6,15 @@
       %h3.subtitle 新規投稿商品
     %ul.list__box__contents__cardList
       - @productions.each do |production|
+        
         %li.list__box__contents__cardList--card
+          
           = link_to production_path(id: production.id, class: "card") do
             = image_tag production.images.first.src.url
+            -if production.purchaser_id.present? 
+              .items-box_photo__sold
+                .items-box_photo__sold__inner
+                  SOLD
             %h3.name
               = production.name
             %p.price

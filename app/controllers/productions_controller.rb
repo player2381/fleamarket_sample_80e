@@ -57,8 +57,6 @@ class ProductionsController < ApplicationController
   end
 
 
-
-
   private
 
   def production_params

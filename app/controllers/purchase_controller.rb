@@ -2,9 +2,9 @@ class PurchaseController < ApplicationController
   
   require 'payjp'
   
-  # before_action :set_card, only: [:index, :pay]
-  
+
   def index
+    @production = Production.find(params[:production_id]) 
     card = Card.where(user_id: current_user.id).first
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
@@ -19,23 +19,22 @@ class PurchaseController < ApplicationController
   end
 
   def pay
-    card = Card.where(user_id: current_user.id).first
-    Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-    Payjp::Charge.create(
-    :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
-    :customer => card.customer_id, #顧客ID
-    :currency => 'jpy', #日本円
-  )
-  redirect_to controller: "productions", action: "index", notice: "購入が完了しました"
+
+    @production = Production.find(params[:production_id])
+      card = Card.where(user_id: current_user.id).first
+      Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+      Payjp::Charge.create(
+      :amount => @production.price, #支払金額を入力（itemテーブル等に紐づけても良い）
+      :customer => card.customer_id, #顧客ID
+      :currency => 'jpy', #日本円
+    )
+    @production.update(purchaser_id: current_user.id)
+    redirect_to root_path
+    flash[:sucess] = "購入が完了しました"
+
   end
 
 
-  def done
-  end
+ 
 
-  # private
-
-  # def set_card
-  #   card = Card.where(user_id: current_user.id).first
-  # end
 end
