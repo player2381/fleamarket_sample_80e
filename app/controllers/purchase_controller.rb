@@ -2,6 +2,7 @@ class PurchaseController < ApplicationController
   
   require 'payjp'
   
+
   def index
     @production = Production.find(params[:production_id]) 
     card = Card.where(user_id: current_user.id).first
@@ -18,6 +19,7 @@ class PurchaseController < ApplicationController
   end
 
   def pay
+
     @production = Production.find(params[:production_id])
       card = Card.where(user_id: current_user.id).first
       Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
@@ -29,34 +31,10 @@ class PurchaseController < ApplicationController
     @production.update(purchaser_id: current_user.id)
     redirect_to root_path
     flash[:sucess] = "購入が完了しました"
+
   end
 
 
-  # def done
-  #   @production_purchaser= Production.find(params[:id])
-  #   @product_purchaser.update( purchaser_id: current_user.id)
-  # end
+ 
 
-
-  # private
-
-  # def production_params
-  #   Production.where.params.require(:production).permit(
-  #     :category_id,
-  #     :name,
-  #     :price,
-  #     :introduction,
-  #     :size,
-  #     :shipping_charge,
-  #     :prefecture_code,
-  #     :detail_date,
-  #     :trading_status,
-  #     images_attributes: [:src])
-  #     .merge(user_id: current_user.id)
-      
-  # end
-
-  # def set_card
-  #   card = Card.where(user_id: current_user.id).first
-  # end
 end
