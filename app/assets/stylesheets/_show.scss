@@ -73,16 +73,14 @@
         }
       }
     }
+    .item__delete{
+      display: flex;
+      justify-content: center;
+    }
     .item__btn{
       display: flex;
       justify-content: center;
-        .btn{
-        height: 70px;
-        width: 600px;
-        background-color: #3ccace;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        
         a{
           font-size: 30px;
           color: white;
@@ -90,7 +88,17 @@
           text-decoration: none;
           font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
         }
-      }
     }
   }
 }
+
+.btn{
+  height: 70px;
+  width: 600px;
+  background-color: #3ccace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
