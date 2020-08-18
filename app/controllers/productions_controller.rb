@@ -41,9 +41,16 @@ class ProductionsController < ApplicationController
       render :edit
     end
   end
+  
+#  編集機能で使います
+  # def edit
+  #    @production = Production.find(params[:id])
+  # end
 
-
-
+  # def update
+  #    @production = Production.find(params[:id])
+  #    production.update(production_params)
+  # end
 
 
 

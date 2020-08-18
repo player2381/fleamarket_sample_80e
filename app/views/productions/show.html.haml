@@ -2,46 +2,65 @@
 .show
   .item
     .item__name
-      %a メンズ リネンシャツ
+      = @production.name
     .item__infomation
+      = @production.introduction
       %img
+        - @production.images.each do |i|
+          = image_tag i.src.url
       %table
         %tbody
           %tr
-            %th 出品者
+            %th 
+              出品者
             %td
-              = link_to '#', class: 'item__infomation__instans' do
-                そら
+              = @production.user.name
           %tr
-            %th カテゴリー
+            %th 
+              カテゴリー
             %td
-              = link_to '#', class: 'item__infomation__instans' do
-                メンズ
+              = @production.category.parent.parent.name
+              %br
+              = @production.category.parent.name
+              %br
+              = @production.category.name
+            
           %tr
-            %th 商品のサイズ
-            %td FREE SIZE
+            %th 
+              商品のサイズ
+            %td
+              = @production.size
           %tr
-            %th 商品の状態
-            %td 目立った傷や汚れなし
+            %th 
+              商品の状態
+            %td
+              = @production.trading_status
           %tr
-            %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %th 
+              配送料の負担
+            %td
+              = @production.shipping_charge
+
           %tr
-            %th 配送の方法
-            %td ゆうゆうメルカリ便
+            %th 
+              配送元地域
+            %td
+              = @production.prefecture_code
           %tr
-            %th 配送元地域
-            %td 山口県
-          %tr
-            %th 発送日の目安
-            %td 1~2日で発送
+            %th 
+              発送日の目安
+            %td
+              = @production.detail_date
     .item__price
       .price1
-        %a ¥1,400
+        %a
+          = @production.price
       .price2
-        %a (税込)
+        %a 
+          円
       .price3
-        %a 送料込み
+        %a
+          = @production.shipping_charge
 
     .item__btn
       .btn

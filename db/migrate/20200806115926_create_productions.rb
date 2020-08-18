@@ -10,7 +10,7 @@ class CreateProductions < ActiveRecord::Migration[6.0]
       # t.string :production_status, null: false
       t.string :size, null: false
       t.string :shipping_charge, null: false
-      t.integer :prefecture_code, null: false
+      t.string :prefecture_code, null: false
       #したの奴いらない？ 
       # t.string :shipping_method, null: false#
       t.string :detail_date, null: false
