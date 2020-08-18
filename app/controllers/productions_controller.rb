@@ -3,7 +3,7 @@ class ProductionsController < ApplicationController
 
 
   def index
-    @productions = Production.includes(:images).order('created_at DESC')
+    @productions = Production.includes(:images).order('created_at DESC').limit(5)
   end
 
   def show
