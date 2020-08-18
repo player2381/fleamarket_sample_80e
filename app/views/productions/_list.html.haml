@@ -8,7 +8,7 @@
       - @productions.each do |production|
         %li.list__box__contents__cardList--card
           = link_to production_path(id: production.id, class: "card") do
-            = image_tag production.images.first.src.url
+            = image_tag production.images.first.src.url,width:"230px",height:"230px"
             -if production.purchaser_id.present? 
               .items-box_photo__sold
                 .items-box_photo__sold__inner
@@ -17,7 +17,7 @@
               = production.name
             %p.price
               = production.price
-              = "円"
+              = "円 (税込み)"
 
 
 
@@ -32,11 +32,11 @@
       - @productions.each do |production|
         %li.list__box__contents__cardList--card
           = link_to production_path(id: production.id, class: "card") do
-            = image_tag production.images.first.src.url
+            = image_tag production.images.first.src.url,width:"230px",height:"230px"
             %h3.name
               = production.name
             %p.price
               = production.price
-              = "円"
+              = "円 (税込み)"
             
           
