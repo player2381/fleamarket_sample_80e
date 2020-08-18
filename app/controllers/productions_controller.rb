@@ -53,16 +53,14 @@ class ProductionsController < ApplicationController
   # end
 
 
-
-
   def destroy
-    if @production.destroy
-      redirect_to root_path
+    production = Production.find(params[:id])
+    if production.destroy
+      redirect_to root_path, notice: '削除しました'
     else
-      render :new
+      render :edit
     end
   end
-
 
 
   private

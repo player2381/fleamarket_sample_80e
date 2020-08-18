@@ -62,6 +62,10 @@
         %a
           = @production.shipping_charge
 
+  - if user_signed_in? && current_user.id == @production.user_id
+    .item__delete
+      = link_to "商品削除", production_path, method: :delete
+  - else
     .item__btn
       .btn
         = link_to "購入画面に進む", production_purchase_index_path(@production.id), class: 'item__btm'
