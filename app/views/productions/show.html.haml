@@ -3,11 +3,15 @@
   .item
     .item__name
       = @production.name
-    .item__infomation
-      = @production.introduction
+    .item__photos
       %img
-        - @production.images.each do |i|
-          = image_tag i.src.url
+        .item__photos-first
+          = image_tag @production.images[0].src.url, size: "300x300"
+        .item__photos-second
+          - @production.images.each do |i|
+            = image_tag i.src.url
+
+    .item__info
       %table
         %tbody
           %tr
@@ -24,7 +28,6 @@
               = @production.category.parent.name
               %br
               = @production.category.name
-            
           %tr
             %th 
               商品のサイズ
@@ -40,25 +43,27 @@
               配送料の負担
             %td
               = @production.shipping_charge
+        %tr
+          %th 
+            配送元地域
+          %td
+            = @production.prefecture_code
+        %tr
+          %th 
+            発送日の目安
+          %td
+            = @production.detail_date
+    .item__introduction
+      商品の説明
+      .item__introduction__content
+        = @production.introduction
 
-          %tr
-            %th 
-              配送元地域
-            %td
-              = @production.prefecture_code
-          %tr
-            %th 
-              発送日の目安
-            %td
-              = @production.detail_date
     .item__price
       .price1
-        %a
-          = @production.price
-      .price2
         %a 
+          = @production.price
           円
-      .price3
+      .price2 
         %a
           = @production.shipping_charge
 

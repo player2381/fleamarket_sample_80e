@@ -3,38 +3,56 @@
   justify-content: center;
   background-color: rgb(243, 242, 242);
   .item{
-    height: 800px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    height: 1300px;
     width: 700px;
     background-color: white;
-    margin: 100px 0 100px 0;
+    margin: 80px 0;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
     &__name{
+      font-size: 35px;
       display: flex;
       justify-content: center;
-      margin: 20px 0 20px 0;
-      a{
-        font-weight: bold;
-        font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ', 'Meiryo', sans-serif;
-        font-size: 30px;
-      }
+      margin: 20px 0 5px 0;
+      font-weight: bold;
     }
-    &__infomation{
+    &__photos {
+      display: block;
+      margin: 0px 10px 10px 10px;
+        .item__photos-first{
+          display: flex;
+          justify-content: center;
+          
+        }
+
+        .item__photos-second {
+          display: flex;
+          justify-content: center;
+          margin:5px 10px ;
+          img {
+            overflow: scroll;
+            height: 100px;
+            width: 100px;
+          }
+        }
+  
+    }
+    &__info {
+      margin: 5px 5px 5px 0;
       display: flex;
       justify-content: center;
-      &__image{
-        height:400px;
-        width: 300px;
-        background-color:white;
-      }
+      font-size: 16px;
       table {
-        margin-left:20px;
         th{
+          width: 150px;
           background-color: rgb(243, 242, 242);
           border: solid lightgray 1px;
           padding: 5px 5px 5px 5px;
           color: rgb(54, 54, 54);
         }
         td {
+          width: 350px;
           padding: 5px 5px 5px 5px;
           border: solid lightgray 1px;
           color: rgb(54, 54, 54);
@@ -45,26 +63,35 @@
         }
       }
     }
+    &__introduction {
+      margin: 20px;
+      font-size: 20px;
+      text-align: center;
+      font-weight: bold;
+      &__content {
+        font-weight: normal;
+        text-align: left;
+        font-size: 18px;
+        display: flex;
+        margin: 0 0 0 50px;
+        white-space: pre-wrap;
+        overflow: scroll;
+        height: 150px;
+      }
+    }
+
     &__price{
       display: flex;
       justify-content: center;
-      margin: 30px 0 20px 0;
+      margin: 10px 0 20px 0;
       .price1{
         a{
-          font-size: 50px;
+          font-size: 40px;
           font-weight: bold;
           font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
         }
       }
       .price2{
-        margin: 0 0 5 10px;
-        a{
-          font-size: 50px;
-          font-weight: normal;
-          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
-        }
-      }
-      .price3{
         margin: 20px 0 0 2px;
         a{
           font-size: 20px;
@@ -73,10 +100,31 @@
         }
       }
     }
+  }
     .item__delete{
       display: flex;
       justify-content: center;
+      margin-bottom: 5px;
+        a{
+          font-size: 30px;
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        }
     }
+    .item__edit{
+      display: flex;
+      justify-content: center;
+        a {
+          font-size: 30px;
+          color: white;
+          font-weight: bold;
+          text-decoration: none;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        }
+    }
+
     .item__btn{
       display: flex;
       justify-content: center;
@@ -90,12 +138,13 @@
         }
     }
   }
-}
+
 
 .btn{
   height: 70px;
   width: 600px;
   background-color: #3ccace;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
