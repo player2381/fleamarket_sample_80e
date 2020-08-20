@@ -6,7 +6,8 @@ class Production < ApplicationRecord
   # accepts_nested_attributes_for :images, allow_destroy: true
   validates_associated :images
 
- validates :price, presence: true
+  validates :name, presence: true
+  validates :price, presence: true
   validates :introduction, presence: true
   validates :size, presence: true
   validates :shipping_charge, presence: true
