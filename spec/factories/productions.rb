@@ -9,6 +9,7 @@ FactoryBot.define do
       prefecture_code  {"北海道"}
       detail_date  {"2~3日で発送"}
       trading_status  {"やや傷汚れあり"}
+      category_id {"メンズ"}
       association :user
       association :category
       after(:build) do |built_production|
@@ -16,5 +17,8 @@ FactoryBot.define do
       end  
     end
 
+    factory :image do
+      src   { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/sample.png"), 'image/png') }
+    end  
   
   end
