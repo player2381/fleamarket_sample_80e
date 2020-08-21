@@ -13,13 +13,11 @@
 
 
     .headerInner__nav
-      
 
       .headerInner__nav__leftBox
         %ul.headerInner__nav__leftBox__list
           %li.headerInner__nav__leftBox__list__categoryMenu
             = link_to "カテゴリー", root_path
-
             %ul.headerInner__nav__leftBox__list__categoryMenu__secondLevel
               - Category.roots.each do |parent|
                 %li.headerInner__nav__leftBox__list__categoryMenu__secondLevel--list
