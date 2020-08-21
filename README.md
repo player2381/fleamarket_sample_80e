@@ -34,7 +34,7 @@ Things you may want to cover:
 |reset_password_token|string ||
 |reset_password_sent_at|datetime||
 |remember_created_at|datetime||
-||timestamps|null: false|
+|timestamps||null: false|
 
 ### Association
 - has_one :address
