@@ -27,8 +27,7 @@ Rails.application.routes.draw do
     collection do
       get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
-      # post 'payment', to: 'purchase#pay'
-      # get 'sold', to: 'production#index'
+      # get 'update'
     end
     resources :purchase, only: [:index] do
       collection do
