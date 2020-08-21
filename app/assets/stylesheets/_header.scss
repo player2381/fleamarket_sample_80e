@@ -134,3 +134,16 @@
     }
   }
 }
+
+.breadcrumbs{
+  display: flex;
+  height: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  border-top: groove 1px;
+  border-bottom: groove 1px;
+}
+.breadcrumbs-list{
+  padding: 0px 250px;
+  padding-top: 15px;
+}
