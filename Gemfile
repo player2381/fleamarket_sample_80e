@@ -77,3 +77,5 @@ gem 'payjp'
 gem 'mini_magick'
 gem 'jquery-rails'
 gem "gretel"
+gem 'font-awesome-sass'
+

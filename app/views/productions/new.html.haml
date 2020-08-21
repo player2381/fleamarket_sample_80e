@@ -16,12 +16,39 @@
             .products_new-image-box
               .products_new-content
               .products_new-uploader-box
-                #image-box.class_products_new-uploader__label
-                  = form.fields_for :images do |i|
-                    %div{"data-index": 0}
-                    = i.file_field :src, class: "productions_new-js-file"
-                  .js-remove
-                    %span 削除
+                = form_for @production do |f|
+                  #image-box
+                    #previews
+                      - if @production.persisted?
+                        - @production.images.each_with_index do |image, i|
+                          = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+                      .pre-box
+                        = f.fields_for :images do |image|
+                          .js-file_group{"data-index" => "#{image.index}"}
+                            = image.file_field :src, class: 'js-file'
+                        
+                          %br/
+                          %span.js-remove 削除
+                        - if @production.persisted?
+                          = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                      - if @production.persisted?
+                        .js-file_group{"data-index" => "#{@production.images.count}"}
+                          = file_field_tag :src, name: "product[images_attributes][#{@product.images.count}][src]", class: 'js-file'
+                          .js-remove 削除
+            
+
+              
+                  
+                -# #image-box.class_products_new-uploader__label
+                -#   .item-num-0#image-box__container
+                -#     = form.fields_for :images do |i|
+                -#       .input-area
+                        
+                -#         = i.file_field :images, type: 'file', style: "display:none", id:"img-file", class: "productions_new-js-file", "date-index": "#{@production.images.count}" 
+                -#         %label{for: "img-file"}
+                -#           %i.fas.fa-camera
+                -#       .js-remove
+                -#         -# %span 削除
                   
         .products_new-title
           .products_new-product__headline
