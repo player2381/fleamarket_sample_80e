@@ -30,7 +30,7 @@ Things you may want to cover:
 |birth_date|date|null: false|
 |name|string|null:false|
 |email|string|null: false, default: ""|
-|encrypted_password|string|null: false, default: ""|
+|encrypted_password|string|null: false, default:""|
 |reset_password_token|string ||
 |reset_password_sent_at|datetime||
 |remember_created_at|datetime||
@@ -47,7 +47,7 @@ Things you may want to cover:
 
 ## card
 
-|user|references|forign_key: true|
+|user_id|references|foreign_key: true|
 |customer_id|string|null: false|
 |card_id|string|null: false|
 ||timestamps||
@@ -60,9 +60,9 @@ Things you may want to cover:
 
 ## images
 
-|production|references|null: false, foreign_key: true|
+|production_id|references|null: false, foreign_key: true|
 ||timestamps||
-|src|strings null:false|
+|src|strings|null:false|
 
 ### Association
 - belongs_to :production
@@ -72,41 +72,35 @@ Things you may want to cover:
 
 ## productions
 
-|user|references|forign_key: true|
-|price|integer|null: false|
-|status|integer||
-|prefecture_code|string|null: false|
-||timestamps||
-
-
+|user_id|references|foreign_key: true|
 |name|string|null: false|
-|category_id|integer|null: false, foreign_key: true|
-|price|string|null: false|
+|category_id|integer|null: false, foreign_key:true|
+|price|integer|null: false|
 |introduction|text|null: false|
-|purchaser_id|references|forign_key: true|
+|purchaser_id|references|foreign_key: true|
+|status|integer||
 |size|string|null: false|
 |shipping_charge|string|null: false|
-<!-- |prefecture_code|integer|null: false| -->
-<!-- |shipping_method|string|null: false| -->
+|prefecture_code|string|null: false|
 |detail_date|string|null: false|
 |trading_status|string|null: false|
-<!-- |production_img_id|null:false, foreign_key: true| -->
+||timestamps||
+
 ### Association
 -belongs_to :category
 -belongs_to :user, foreign_key: 'user_id'
 -has_many :images, dependent: :destroy
--accepts_nested_attributes_for :images,allow_destroy:true
+-accepts_nested_attributes_for :images,
+allow_destroy:true
 
 
 
 ## category
-|Column|Type|Options|
-|------|----|-------|
-
-||timestamps||
 
 |name|string|null: false|
-<!-- |ancestry|string|null: false| -->
+|ancestry|string|null: false|
+||timestamps||
+
 ### Association
 has_many :productions
 has_ancestry
@@ -114,11 +108,6 @@ has_ancestry
 
 
 ## addresses
-|Column|Type|Options|
-|------|----|-------|
-
-|phone_number|string|null: false, unique: true|
-||timestamps||
 
 |address_first_name|string|null: false|
 |address_family_name|string|null: false|
@@ -129,8 +118,10 @@ has_ancestry
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string||
-<!-- |phone_number|integer|null: false, unique: true| -->
+|phone_number|string|null: false, unique: true|
 |user_id|string|null: false, foreign_key: true|
+||timestamps||
+
 ### Association
 -belongs_to :user, optional: true
 
@@ -139,8 +130,9 @@ has_ancestry
 
 
 ## purchase
-|user|references|forign_key: true|
-|production|references|forign_key: true|
+
+|user_id|references|foreign_key: true|
+|production_id|references|foreign_key: true|
 ||timestamps||
 
 ### Association
@@ -152,24 +144,9 @@ has_ancestry
 
 
 ## customer
-|user|references|forign_key: true|
+
+|user_id|references|foreign_key: true|
 ||timestamps||
 
 ### Association
 -belongs_to :user
-
-
-
-
-<!-- ## profiles
-|first_name|string null:false|
-|family_name|string null:false|
-|first_name_kana|string null:false|
-|family_name_kana|string null:false|
-|birth_year|date null:false|
-|birth_month|date null:false|
-|birth_day|date null:false|
-|introduction|text|
-|user_id|reference null:false|foreign_key:true|
-### アソシエーション
-- belongs_to :user -->
