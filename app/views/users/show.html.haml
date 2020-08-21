@@ -10,11 +10,13 @@
       .content-pro
         .content-pro__title
           Trading License
-        .content-pro__name
-          ichico様
+        .content-pro__name= current_user.name
+          
       .info
+        
         .info-date
           登録日
+          = current_user.created_at.strftime('%Y/%m/%d')
         .info-date
           現在の出品数
         .info-date
@@ -24,3 +26,18 @@
 
     .content-right__sub
       最近出品した商品
+
+    .content-right__product
+      - @productions.each do |production|
+        .content-right__product__card
+          = link_to production_path(id: production.id, class: "card") do
+            = image_tag production.images.first.src.url,width:"150px",height:"150px"
+            -if production.purchaser_id.present? 
+              .items-box_photo__solid
+                .items-box_photo__solid__inner
+                  SOLD
+            %h3.name
+              = production.name
+            %p.price
+              = production.price
+              = "円 (税込み)"

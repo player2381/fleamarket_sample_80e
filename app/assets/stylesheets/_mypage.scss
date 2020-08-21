@@ -34,10 +34,74 @@
 }
 
 .content-right__sub{
-  background-color:white;
-  height: 300px;
+  height: 50px;
   width: 700px;
   font-weight: bold;
   padding: 20px 0 0 20px;
 }
 
+.content-right__product{
+  // display: flex;
+  width: 750px;
+  height: 500px;
+  // position: relative;
+  &__card{
+    background-color: white;
+    margin-right: 35px;
+    margin-bottom: 120px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 150px;
+    width: 150px;
+    float:left;
+    position: relative;
+  }
+    .name{
+      margin: 0px 0 5px 0;
+      font-weight: bold;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20px;
+      width: 150px;
+      color: black;
+      padding-top: 0px;
+      font-size: 15px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    }
+    .price{
+      margin-top: 0px;
+      margin-left: auto;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 20px;
+      width: 150px;
+      background-color:#3CCACE;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      color: white;
+      font-weight: bolder;
+      font-size: 15px;
+      font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+    }
+  }
+  .items-box_photo__solid{
+    width: 0;
+    height: 0;
+    border-top: 60px solid #EA352D ;
+    border-right: 60px solid transparent;
+    border-bottom: 60px solid transparent;
+    border-left: 60px solid #EA352D ;
+    z-index:100;
+    position: absolute;
+    top:-1px;
+    &__inner{
+      transform: rotate(-45deg);
+      font-size: 28px;
+      margin:-35px 0px 0px -55px;
+      color: #fff;
+      letter-spacing: 2px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  }
