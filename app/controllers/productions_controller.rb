@@ -1,7 +1,6 @@
 class ProductionsController < ApplicationController
 
 
-
   def index
     @productions = Production.includes(:images).order('created_at DESC')
   end
@@ -42,20 +41,60 @@ class ProductionsController < ApplicationController
     end
   end
   
-#  編集機能で使います
-  # def edit
-  #    @production = Production.find(params[:id])
-  # end
 
-  # def update
-  #    @production = Production.find(params[:id])
-  #    production.update(production_params)
-  # end
+  def edit
+    @production = Production.find(params[:id])
+    @images = Image.where(id: params[:id]) 
+    grandchild_category = @production.category
+    child_category = grandchild_category.parent
+
+
+    @category_parent_array = []
+    Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
+
+    @category_children_array = []
+    Category.where(ancestry: child_category.ancestry).each do |children|
+      @category_children_array << children
+    end
+
+    @category_grandchildren_array = []
+    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
+      @category_grandchildren_array << grandchildren
+    end
+    
+  end
+
+  def update
+    @production = Production.find(params[:id])
+    @production.update(production_params)
+    if production_params[:images_attributes].nil?
+      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
+      render :edit
+    else
+      exit_ids = []
+      production_params[:images_attributes].each do |a,b|
+      exit_ids << production_params[:images_attributes].dig(:"#{a}",:id).to_i
+    end
+      ids = Image.where(production_id: params[:id]).map{|image| image.id }
+      delete__db = ids - exit_ids
+      Image.where(id:delete__db).destroy_all
+      @production.touch
+      if @production.update(production_params)
+        redirect_to  root_path
+      else
+        flash.now[:alert] = '更新できませんでした'
+        render :edit
+      end
+    end
+  end
 
 
   def destroy
     production = Production.find(params[:id])
-    if production.destroy
+    if production.user_id == current_user.id
+      production.destroy
       redirect_to root_path, notice: '削除しました'
     else
       render :edit
@@ -64,6 +103,23 @@ class ProductionsController < ApplicationController
 
 
   private
+
+
+
+  # def category_parent_array
+  #   @category_parent_array = Category.where(ancestry: nil).each do |parent|
+  #   end
+  # end
+
+  # def show_all_instance
+  #   @user = User.find(@item.user_id)
+  #   @images = Image.where(item_id: params[:id])
+  #   @images_first = Image.where(item_id: params[:id]).first
+  #   @category_id = @item.category_id
+  #   @category_parent = Category.find(@category_id).parent.parent
+  #   @category_child = Category.find(@category_id).parent
+  #   @category_grandchild = Category.find(@category_id)
+  # end
 
   def production_params
     params.require(:production).permit(

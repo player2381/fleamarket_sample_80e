@@ -76,6 +76,10 @@
     background-color: #f8f8f8;
     border: dashed 1px #d3d3d3;
     overflow: scroll;
+    // .jsfile-group{
+    //   height: 150px;
+    //   width: 100%;
+    // }
   }
   
   .products_new-uploader__label{
@@ -269,4 +273,6 @@
     cursor: pointer;
   }
 
-  
+  .input-area{
+    display: flex;
+  }
