@@ -1,4 +1,4 @@
-# README
+# README fleamarket_sample_80e DB設計
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
@@ -23,6 +23,7 @@ Things you may want to cover:
 
 * ...
 
+
 ## users
 |Column|Type|Options|
 |------|----|-------|
@@ -33,42 +34,34 @@ Things you may want to cover:
 |reset_password_token|string ||
 |reset_password_sent_at|datetime||
 |remember_created_at|datetime||
-|timestamps||null: false|
 ### Association
 - has_one :address
 - has_one :card
 - has_many :productions
 
 
-
-
 ## card
-
+|Column|Type|Options|
+|------|----|-------|
 |user_id|references|foreign_key: true|
 |customer_id|string|null: false|
 |card_id|string|null: false|
-||timestamps||
-
 ### Association
 - belongs_to :user
 
 
-
-
 ## images
-
+|Column|Type|Options|
+|------|----|-------|
 |production_id|references|null: false, foreign_key: true|
-||timestamps||
 |src|strings|null:false|
-
 ### Association
 - belongs_to :production
 
 
-
-
 ## productions
-
+|Column|Type|Options|
+|------|----|-------|
 |user_id|references|foreign_key: true|
 |name|string|null: false|
 |category_id|integer|null: false, foreign_key:true|
@@ -81,31 +74,27 @@ Things you may want to cover:
 |prefecture_code|string|null: false|
 |detail_date|string|null: false|
 |trading_status|string|null: false|
-||timestamps||
-
 ### Association
--belongs_to :category
--belongs_to :user, foreign_key: 'user_id'
--has_many :images, dependent: :destroy
--accepts_nested_attributes_for :images,
-allow_destroy:true
-
+- belongs_to :category
+- belongs_to :user, foreign_key: 'user_id'
+- has_many :images, dependent: :destroy
+- accepts_nested_attributes_for :images,
+  allow_destroy:true
 
 
 ## category
-
+|Column|Type|Options|
+|------|----|-------|
 |name|string|null: false|
 |ancestry|string|null: false|
-||timestamps||
-
 ### Association
-has_many :productions
-has_ancestry
-
+- has_many :productions
+- has_ancestry
 
 
 ## addresses
-
+|Column|Type|Options|
+|------|----|-------|
 |address_first_name|string|null: false|
 |address_family_name|string|null: false|
 |address_first_name_kana|string|null: false|
@@ -117,33 +106,24 @@ has_ancestry
 |building_name|string||
 |phone_number|string|null: false, unique: true|
 |user_id|string|null: false, foreign_key: true|
-||timestamps||
-
 ### Association
--belongs_to :user, optional: true
-
-
-
+- belongs_to :user, optional: true
 
 
 ## purchase
-
+|Column|Type|Options|
+|------|----|-------|
 |user_id|references|foreign_key: true|
 |production_id|references|foreign_key: true|
-||timestamps||
-
 ### Association
--belongs_to :user
--belongs_to :card
--belongs_to :production
-
-
+- belongs_to :user
+- belongs_to :card
+- belongs_to :production
 
 
 ## customer
-
+|Column|Type|Options|
+|------|----|-------|
 |user_id|references|foreign_key: true|
-||timestamps||
-
 ### Association
--belongs_to :user
+- belongs_to :user
