@@ -11,9 +11,10 @@
         .content-pro__name= current_user.name
           
       .info
-        .info-date-name= current_user.created_at
+        
         .info-date
           登録日
+          = current_user.created_at.strftime('%Y/%m/%d')
         .info-date
           現在の出品数
         .info-date
