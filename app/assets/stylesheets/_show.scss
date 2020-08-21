@@ -116,6 +116,15 @@
       display: flex;
       justify-content: center;
       margin-bottom: 5px;
+      .btn{
+        height: 70px;
+        width: 600px;
+        background-color: #3ccace;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
         a{
           font-size: 30px;
           color: white;
@@ -127,6 +136,15 @@
     .item__edit{
       display: flex;
       justify-content: center;
+      .btn{
+        height: 70px;
+        width: 600px;
+        background-color: #3ccace;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
         a {
           font-size: 30px;
           color: white;
@@ -140,12 +158,14 @@
       display: flex;
       justify-content: center;
       .btn{
-        background-color:red;
-        height: 60px;
-        width: 500px;
+        height: 70px;
+        width: 600px;
+        background-color: #3ccace;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
+      }
         a{
           font-size: 30px;
           color: white;
