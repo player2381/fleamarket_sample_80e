@@ -41,7 +41,16 @@ Things you may want to cover:
 - has_one :card
 - has_many :productions
 
-
+## usersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+|nickname|string|null: false, unique: true|
+### Association
+- has_many :groups,  through:  :groups_users
+- has_many :groups_users
+- has_many :messages
 
 
 
