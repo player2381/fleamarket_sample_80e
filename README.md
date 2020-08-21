@@ -26,7 +26,6 @@ Things you may want to cover:
 ## users
 |Column|Type|Options|
 |------|----|-------|
-
 |birth_date|date|null: false|
 |name|string|null:false|
 |email|string|null: false, default: ""|
@@ -35,22 +34,11 @@ Things you may want to cover:
 |reset_password_sent_at|datetime||
 |remember_created_at|datetime||
 |timestamps||null: false|
-
 ### Association
 - has_one :address
 - has_one :card
 - has_many :productions
 
-## usersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|email|string|null: false, unique: true|
-|password|string|null: false|
-|nickname|string|null: false, unique: true|
-### Association
-- has_many :groups,  through:  :groups_users
-- has_many :groups_users
-- has_many :messages
 
 
 
