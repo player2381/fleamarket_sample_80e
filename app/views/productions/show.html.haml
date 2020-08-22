@@ -4,9 +4,12 @@
 
 
 
-
 .show
   .item
+    .soldout
+      - if @production.user_id.present? && @production.purchaser_id.present?
+        .soldout__item
+          = "Sold Out"
     .item__name
       = @production.name
     .item__photos
@@ -80,7 +83,15 @@
       .item__edit
         .btn
           = link_to "商品編集", edit_production_path
-    - else
+    - elsif @production.purchaser_id.present?
+      .item__btn
+        .btn
+          = link_to "売れ切れです", root_path
+    - elsif current_user.present?
       .item__btn
         .btn
           = link_to "購入画面に進む", production_purchase_index_path(@production.id), class: 'item__btm'
+    - elsif current_user.blank?
+      .item__btn
+        .btn
+          = link_to "ログインしてください", root_path
