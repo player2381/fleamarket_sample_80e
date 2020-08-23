@@ -13,7 +13,6 @@ class CardsController < ApplicationController
     
     Payjp.api_key = ENV["PAYJP_ACCESS_KEY"]
     if params['payjp-token'].blank?
-      
       redirect_to action: "new"
     else
       customer = Payjp::Customer.create(

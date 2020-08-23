@@ -1,188 +1,79 @@
-// $(window).on("turbolinks:load", function() {
-//   function buildImage(loadedImageUri){
-//     var html = `<li class="sell-upload-item">
-//                   <figure class="sell-upload-figure">
-//                     <img class="img1" src=${loadedImageUri}>
-//                   </figure>
-//                   <div class="sell-upload-button2">
-//                     <a>削除</a>
-//                   </div>
-//                 </li>`
-//                 return html
-//   };
-
-//   var files_array = [];
-//   var new_image_files = [];
-//   // var good_image = gon.images_binary_datas.slice(0, 5);
-//   $.each(good_image, function(index, image) {
-//     binary_data = good_image[index]
-//     var loadedImageUri =  "data:image/jpeg;base64," + binary_data
-//     $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items ul")
-//     $('a').addClass('delete_btn');
-//     files_array.push(loadedImageUri)
-//     if (files_array.length == 5) {
-//       $('.sell_upload__box').css({
-//         "flex-wrap": "wrap"
-//       });
-//     }
-//   })
+$(document).on('turbolinks:load', ()=> {
+  // 画像用のinputを生成する関数
+  const buildFileField = (index)=> {
+    const html = `<div data-index="${index}" class="js-file_group">
+                    <input class="js-file" type="file"
+                    name="product[images_attributes][${index}][src]"
+                    id="product_images_attributes_${index}_src"><br>
+                    <div class="js-remove">削除</div>
+                  </div>`;
+    return html;
+  }
   
-//   var good_image2 = gon.images_binary_datas.slice(5);
-//   $.each(good_image2, function(index, image) {
-//     binary_data = good_image2[index]
-//     var loadedImageUri =  "data:image/jpeg;base64," + binary_data
-//     $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items2 ul")
-//     files_array.push(loadedImageUri)
-//     $('.sell_upload__box').css({
-//       "flex-wrap": "wrap"
-//     });
-//     $('.sell_upload__drop').css({
-//       width: `calc(100% - (24% * ${files_array.length - 5}))`
-//     });
-    
-    
+  
+  // プレビュー用のimgタグを生成する関数
+  const buildImg = (index, url)=> {
+    const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+    return html;
+  }
+  
+  // file_fieldのnameに動的なindexをつける為の配列
+  let fileIndex = [1,2,3,4,5];
+  
+  $('#image-box').on('change', '.js-file', function(e) {
+    // fileIndexの先頭の数字を使ってinputを作る
+    $('#image-box').append(buildFileField(fileIndex[0]));
+    fileIndex.shift();
+    // 末尾の数に1足した数を追加する
+    fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
+  });
+  
 
-    
-//     $('a').addClass('delete_btn');
-//   })
+  // 既に使われているindexを除外
+  lastIndex = $('.js-file_group:last').data('index');
+  fileIndex.splice(0, lastIndex);
 
-//   $('#add-image').on("change", function(e){
-//     var file = e.target.files[0];
-//     new_image_files.push(file)
-//     var reader = new FileReader();
-    
-//     reader.onload = (function(file){
-//       return function(e){
-//         var loadedImageUri = e.target.result
-//         files_array.push(loadedImageUri)
-//         if (files_array.length < 5) {
-//           $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items ul")
-//         }else {
-//           $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items2 ul")
-//           $('.sell_upload__drop').css({
-//             width: `calc(100% - (24% * ${files_array.length - 5}))`
-//           });
-//         }
-//         $('a').addClass('delete_btn');
-//       };
-//     })(file);
-//     reader.readAsDataURL(file);
+  $('.hidden-destroy').hide();
 
-//     if (files_array.length == 5) {
-//       $('.sell_upload__box').css({
-//         "flex-wrap": "wrap"
-//       });
-//     }
-//     if(files_array.length == 9){
-//       $('.sell_upload__drop').css({
-//         "display": "none"
-//       });
-//     }
-//   });
+  $('#image-box').on('change', '.js-file', function(e) {
+    const targetIndex = $(this).parent().data('index');
+    // ファイルのブラウザ上でのURLを取得する
+    const file = e.target.files[0];
+    const blobUrl = window.URL.createObjectURL(file);
 
-//   // $(document).on('click', 'delete_btn', function(){
-//   //   var imageId = 
-//   //   $.ajax({
-//   //     url: '',
-//   //     type: "POST",
-//   //     data: {},
-//   //     dataType: 'json'
-//   //   })
-//   // })
+    // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
+    if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      img.setAttribute('src', blobUrl);
+    } else {  // 新規画像追加の処理
+      $('#previews').append(buildImg(targetIndex, blobUrl));
+      // fileIndexの先頭の数字を使ってinputを作る
+      $('#image-box').append(buildFileField(fileIndex[0]));
+      fileIndex.shift();
+      // 末尾の数に1足した数を追加する
+      fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+    }
+    let fileReader = new FileReader();
+    let num = $('#image-box').length + 1
+      fileReader.readAsDataURL(file);
+      //画像が5枚になったら超えたらドロップボックスを削除する
+      if (num == 1){
+        $('.js-file').css('display', 'none')   
+      }
+  });
 
-//   $(document).on('click', '.sell-upload-button2 a', function(){
-//     var index = $(".sell-upload-button2 a").index(this)
-//     files_array.splice(index -1, 1);
-//     $(this).parent().parent().remove();
+  $('#image-box').on('click', '.js-remove', function() {
+    console.log("ok");
+    const targetIndex = $(this).parent().data('index');
+    // // 該当indexを振られているチェックボックスを取得する
+    const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+    // // もしチェックボックスが存在すればチェックを入れる
+    if (hiddenCheck) hiddenCheck.prop('checked', true);
 
-//     if(files_array.length < 5) {
-//       $('.sell-upload-items ul').empty();
-//       $('.sell-upload-items2 ul').empty();
-//       files_array.forEach(function(image, index){
-//         var loadedImageUri =  files_array[index]
-//         $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items ul")
-//       })
-//       $('.sell_upload__drop').css({
-//         "display": "block"
-//       });
-//     }else {
-//       var pickup_image = files_array.slice(0, 5);
-//       $('.sell-upload-items ul').empty();
-//       $('.sell-upload-items2 ul').empty();
-//       pickup_image.forEach(function(image, index){
-//         var loadedImageUri =  pickup_image[index]
-//         $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items ul")
-//       })
-//       var pickup_image2 = files_array.slice(5);
-//       pickup_image2.forEach(function(image, index){
-//         var loadedImageUri =  pickup_image[index]
-//         $(buildImage(loadedImageUri,)).appendTo(".sell-upload-items2 ul")
-//       })
-//       $('.sell_upload__drop').css({
-//         "display": "block"
-//       });
-//     }
-//   });
-
-//   $('#edit_prodcut').on('submit', function(e){
-//     e.preventDefault();
-//     var formData = new FormData($(this).get(0));
-//     new_image_files.forEach(function(file){
-//       formData.append("images[url][]", file)
-//     });
-//     $.ajax({
-//       url: '/products/' + gon.product.id,
-//       type: "PATCH",
-//       data: formData,
-//       contentType: false,
-//       processData: false,
-//     })
-//   });
-// });
+    $(this).parent().remove();
+    $(`img[data-index="${targetIndex}"]`).remove();
+    // 画像入力欄が0個にならないようにしておく
+    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+  });
+});
 
 
-
-
-
-
-
-
-
-
-// // $(document).on('click', 'data-index', function (){
-// //   // 画像用のinputを生成する関数
-// //   const buildFileField = (index)=> {
-// //     const html = `<div data-index="${index}" class="class_products_new-uploader__label" id="image-box">
-// //                     <input class="productions_new-js-file" type="file" 
-// //                       name="production[images_attributes][${index}][src]" 
-// //                       id="production_images_attributes_${index}_src">
-// //                     <div class="js-remove">
-// //                       <span>削除</span>
-// //                     </div>
-// //                   </div>`;
-// //     return html;
-// //   }
-
-// //   // プレビュー用のimgタグを生成する関数
-// //   const buildImg = (index, url)=> {
-// //     const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
-// //     return html;
-// //   }
-
-// //   // file_fieldのnameに動的なindexをつける為の配列
-// //   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
-
-// //   $('#image-box').on('change', '.productions_new-js-file', function(e) {
-// //     // fileIndexの先頭の数字を使ってinputを作る
-// //     $('#image-box').append(buildFileField(fileIndex[0]));
-// //     fileIndex.shift();
-// //     // 末尾の数に1足した数を追加する
-// //     fileIndex.push(fileIndex[fileIndex.length - 1] + 1)
-// //   });
-
-// //   $('.js-remove').on('click', function() {
-// //     $(this).parent().remove();
-// //     // 画像入力欄が0個にならないようにしておく
-// //     if ($('.productions_new-js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
-// //   });
-// // });
