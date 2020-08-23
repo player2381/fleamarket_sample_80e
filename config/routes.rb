@@ -9,17 +9,12 @@ Rails.application.routes.draw do
   end
   root to:'productions#index'
 
-
-    
-
   resources :cards do
     collection do
       #payjpでトークン化を行う
       post 'pay', to: 'cards#pay'
     end
   end
-
-
 
   resources :users, only: [:show]
 
@@ -36,7 +31,5 @@ Rails.application.routes.draw do
       end
     end
   end
-
-  
 end
 

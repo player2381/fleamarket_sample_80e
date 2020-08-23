@@ -1,7 +1,6 @@
 class ProductionsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
-
   def index
     @productions = Production.includes(:images).order('created_at DESC').limit(5)
   end
@@ -24,47 +23,17 @@ class ProductionsController < ApplicationController
   end
 
   def create
-    
     @production = Production.new(production_params)
     if @production.save!
       redirect_to root_path(@production.user_id)
     else
       render :new
     end
-
   end
-
-  def update
-    if @production.update(product_params)
-      redirect_to root_path
-    else
-      render :edit
-    end
-  end
-  
 
   def edit
     @production = Production.find(params[:id])
-    @images = Image.where(id: params[:id]) 
-    grandchild_category = @production.category
-    child_category = grandchild_category.parent
-
-
-    @category_parent_array = []
-    Category.where(ancestry: nil).each do |parent|
-      @category_parent_array << parent.name
-    end
-
-    @category_children_array = []
-    Category.where(ancestry: child_category.ancestry).each do |children|
-      @category_children_array << children
-    end
-
-    @category_grandchildren_array = []
-    Category.where(ancestry: grandchild_category.ancestry).each do |grandchildren|
-      @category_grandchildren_array << grandchildren
-    end
-    
+    @category = Category.where(ancestry: "")
   end
 
   def update
@@ -91,6 +60,14 @@ class ProductionsController < ApplicationController
     end
   end
 
+  # def update
+  #   if @production.update(product_params)
+  #     redirect_to root_path
+  #   else
+  #     render :edit
+  #   end
+  # end
+
 
   def destroy
     production = Production.find(params[:id])
@@ -105,22 +82,6 @@ class ProductionsController < ApplicationController
 
   private
 
-
-
-  # def category_parent_array
-  #   @category_parent_array = Category.where(ancestry: nil).each do |parent|
-  #   end
-  # end
-
-  # def show_all_instance
-  #   @user = User.find(@item.user_id)
-  #   @images = Image.where(item_id: params[:id])
-  #   @images_first = Image.where(item_id: params[:id]).first
-  #   @category_id = @item.category_id
-  #   @category_parent = Category.find(@category_id).parent.parent
-  #   @category_child = Category.find(@category_id).parent
-  #   @category_grandchild = Category.find(@category_id)
-  # end
 
   def production_params
     params.require(:production).permit(
