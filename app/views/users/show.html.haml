@@ -1,4 +1,6 @@
 = render 'productions/header'
+- breadcrumb :mypage
+= render "layouts/breadcrumbs"
 .content
   .content-left
     = render 'side'
@@ -9,11 +11,8 @@
         .content-pro__title
           Trading License
         .content-pro__name= current_user.name
-          
       .info
-        
         .info-date
-          登録日
           = current_user.created_at.strftime('%Y/%m/%d')
         .info-date
           現在の出品数
