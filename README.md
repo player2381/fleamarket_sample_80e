@@ -31,9 +31,7 @@ Things you may want to cover:
 |name|string|null:false|
 |email|string|null: false, default: ""|
 |encrypted_password|string|null: false, default:""|
-|reset_password_token|string ||
-|reset_password_sent_at|datetime||
-|remember_created_at|datetime||
+|reset_password_token|string|null: false|
 ### Association
 - has_one :address
 - has_one :card
@@ -68,7 +66,7 @@ Things you may want to cover:
 |price|integer|null: false|
 |introduction|text|null: false|
 |purchaser_id|references|foreign_key: true|
-|status|integer||
+<!-- |status|integer|| -->
 |size|string|null: false|
 |shipping_charge|string|null: false|
 |prefecture_code|string|null: false|
