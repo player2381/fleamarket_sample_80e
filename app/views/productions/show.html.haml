@@ -80,7 +80,7 @@
           = link_to "商品削除", production_path, method: :delete
       .item__edit
         .btn
-          = link_to "商品編集", edit_production_path, "data-turbolinks": false
+          = link_to "商品編集", edit_production_path
     - elsif @production.purchaser_id.present?
       .item__btn
         .btn
