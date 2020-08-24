@@ -3,7 +3,7 @@ $(function(){
   const buildFileField = (num)=> {
     const html = `<div class="js-file_groupi" data-index="${num}">
                     <input class="js-filei" type="file"
-                    name="production[production_images_attributes][${num}][image]"
+                    name="production[images_attributes][${num}][src]"
                     id="production_production_images_attributes_${num}_image">
                     <span class="js-removei">削除</span>
                   </div>`;
@@ -21,7 +21,7 @@ $(function(){
   // #image-boxの子要素であるjs-fileに変更がある場合にイベントが発火するようになってる
   $('#image-boxi').on('change', '.js-filei', function(e) {
 
-    // #image-boxの子要素であるjs-fileに変更がある場合にイベントが発火するようになってる
+
     const targetIndex = $(this).parent().data('index');
 
     // ファイル名を取得して定数fileに代入している
@@ -41,7 +41,7 @@ $(function(){
       $('#previewsi').append(buildImg(targetIndex, blobUrl));
     let limitFileField = $(".js-file_groupi:last").data("index");
 
-    // 最大10枚以上の画像は投稿できないようにしてる
+    // 最大5枚以上の画像は投稿できないようにしてる
     if($(".js-file_groupi").length >= 5 ){
       return false;
     } else {
@@ -62,7 +62,7 @@ $(function(){
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
     $(`img[data-index="${targetIndex}"]`).remove();
-    if ((targetIndex == limitFileField ) || ($(".js-file_groupi").length >= 9)) ($('#image-boxi').append(buildFileField(fileIndex)));
+    if ((targetIndex == limitFileField ) || ($(".js-file_groupi").length >= 4)) ($('#image-boxi').append(buildFileField(fileIndex)));
   });
 });
 
