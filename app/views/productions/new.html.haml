@@ -27,8 +27,8 @@
                     - if @production.persisted?
                       = production.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                   - if @production.persisted?
-                    .js-file_groupi{"data-index" => "#{@production.production_images.count}"}
-                      = file_field_tag :image, name: "production[production_images_attributes][#{@production.production_images.count}][image]", class: 'js-filei'
+                    .js-file_groupi{"data-index" => "#{@production.images.count}"}
+                      = file_field_tag :image, name: "production[production_images_attributes][#{@production.images.count}][image]", class: 'js-filei'
                       .js-removei 削除             
                 
                         
