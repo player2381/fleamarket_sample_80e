@@ -66,7 +66,6 @@ Things you may want to cover:
 |price|integer|null: false|
 |introduction|text|null: false|
 |purchaser_id|references|foreign_key: true|
-<!-- |status|integer|| -->
 |size|string|null: false|
 |shipping_charge|string|null: false|
 |prefecture_code|string|null: false|
