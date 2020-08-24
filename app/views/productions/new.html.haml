@@ -10,27 +10,26 @@
           .products_new-product__headline
             .products_new-product__headline--title 出品画像
             .products_new-product__headline--required 必須
-          %p.products_new-product__explanation 最大10枚までアップロードできます
+          %p.products_new-product__explanation 最大5枚までアップロードできます
           .products_new-image
             .products_new-image-box
               .products_new-content
               .products_new-uploader-box
-                #image-box
-                  #previews
+                #image-boxi
+                  #previewsi
                     - if @production.persisted?
-                      - @production.images.each_with_index do |image, i|
-                        = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
-                  = form.fields_for :images do |image|
-                    .js-file_group{"data-index" => "#{image.index}"}
-                      = image.file_field :src, class: 'js-file'
-                      %br/
-                      %span.js-remove 削除
+                      - @production.production_images.each_with_index do |image, i|
+                        = image_tag "#{image.image}", data: { index: i}, width: "100", height: '100'
+                  = form.fields_for :production_images do |image|
+                    .js-file_groupi{"data-index" => "#{image.index}"}
+                      = image.file_field :image, class: 'js-filei'
+                      %span.js-removei 削除
                     - if @production.persisted?
-                      = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                      = production.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
                   - if @production.persisted?
-                    .js-file_group{"data-index" => "#{@production.images.count}"}
-                      = file_field_tag :src, name: "product[images_attributes][#{@product.images.count}][src]", class: 'js-file'
-                      .js-remove 削除                  
+                    .js-file_groupi{"data-index" => "#{@production.production_images.count}"}
+                      = file_field_tag :image, name: "production[production_images_attributes][#{@production.production_images.count}][image]", class: 'js-filei'
+                      .js-removei 削除             
                 
                         
         .products_new-title

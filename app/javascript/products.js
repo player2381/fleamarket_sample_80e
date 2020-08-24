@@ -1,11 +1,11 @@
 $(function(){
   let fileIndex = 1
   const buildFileField = (num)=> {
-    const html = `<div class="js-file_group" data-index="${num}">
-                    <input class="js-file" type="file"
+    const html = `<div class="js-file_groupi" data-index="${num}">
+                    <input class="js-filei" type="file"
                     name="production[production_images_attributes][${num}][image]"
                     id="production_production_images_attributes_${num}_image">
-                    <span class="js-remove">削除</span>
+                    <span class="js-removei">削除</span>
                   </div>`;
     fileIndex += 1
     return html;
@@ -19,7 +19,7 @@ $(function(){
   $('.hidden-destroy').hide();
 
   // #image-boxの子要素であるjs-fileに変更がある場合にイベントが発火するようになってる
-  $('#image-box').on('change', '.js-file', function(e) {
+  $('#image-boxi').on('change', '.js-filei', function(e) {
 
     // #image-boxの子要素であるjs-fileに変更がある場合にイベントが発火するようになってる
     const targetIndex = $(this).parent().data('index');
@@ -29,7 +29,7 @@ $(function(){
 
 
     if(!file){
-      $(`.js-file_group[data-index=${targetIndex}]`).find(".js-remove").trigger("click");
+      $(`.js-file_groupi[data-index=${targetIndex}]`).find(".js-removei").trigger("click");
       return false;
     }
 
@@ -38,23 +38,23 @@ $(function(){
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  
-      $('#previews').append(buildImg(targetIndex, blobUrl));
-    let limitFileField = $(".js-file_group:last").data("index");
+      $('#previewsi').append(buildImg(targetIndex, blobUrl));
+    let limitFileField = $(".js-file_groupi:last").data("index");
 
     // 最大10枚以上の画像は投稿できないようにしてる
-    if($(".js-file_group").length >= 5 ){
+    if($(".js-file_groupi").length >= 5 ){
       return false;
     } else {
-      $('#image-box').append(buildFileField(fileIndex));
+      $('#image-boxi').append(buildFileField(fileIndex));
 
     }
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
+  $('#image-boxi').on('click', '.js-removei', function() {
 
     // 最新のインデックス番号を取得して変数limitFileFieldに代入している
-    let limitFileField = $(".js-file_group:last").data("index");
+    let limitFileField = $(".js-file_groupi:last").data("index");
     const targetIndex = $(this).parent().data('index')
 
     // 削除ボタンを押した時に該当のインデックス番号の入った入力フォームとプレビュー画像を消せるようになっている
@@ -62,7 +62,7 @@ $(function(){
     if (hiddenCheck) hiddenCheck.prop('checked', true);
     $(this).parent().remove();
     $(`img[data-index="${targetIndex}"]`).remove();
-    if ((targetIndex == limitFileField ) || ($(".js-file_group").length >= 9)) ($('#image-box').append(buildFileField(fileIndex)));
+    if ((targetIndex == limitFileField ) || ($(".js-file_groupi").length >= 9)) ($('#image-boxi').append(buildFileField(fileIndex)));
   });
 });
 

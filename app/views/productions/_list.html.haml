@@ -35,6 +35,10 @@
           -if production.images.present?
             = link_to production_path(id: production.id, class: "card") do
               = image_tag production.images.first.src.url,width:"230px",height:"230px"
+              -if production.purchaser_id.present? 
+                .items-box_photo__sold
+                  .items-box_photo__sold__inner
+                    SOLD
               %h3.name
                 = production.name
               %p.price
