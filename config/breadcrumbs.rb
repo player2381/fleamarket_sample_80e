@@ -24,7 +24,7 @@ end
 
 crumb :production_show do
   link "商品詳細", production_path
-  parent :mypage
+  parent :root
 end
 
 crumb :production_update do
