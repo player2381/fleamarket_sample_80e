@@ -61,13 +61,13 @@ class ProductionsController < ApplicationController
 
 
   def destroy
-    production = Production.find(params[:id])
+    @production = Production.find(params[:id])
     if @production.user_id != current_user.id
       flash[:sucess] = "できません"
       redirect_to root_path
     end
-    if production.user_id == current_user.id
-      production.destroy
+    if @production.user_id == current_user.id
+      @production.destroy
       redirect_to root_path, notice: '削除しました'
     else
       render :edit
