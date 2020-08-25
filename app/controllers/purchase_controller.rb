@@ -20,18 +20,21 @@ class PurchaseController < ApplicationController
   end
 
   def pay
-
-    @production = Production.find(params[:production_id])
-      card = Card.where(user_id: current_user.id).first
-      Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-      Payjp::Charge.create(
-      :amount => @production.price, #支払金額を入力（itemテーブル等に紐づけても良い）
-      :customer => card.customer_id, #顧客ID
-      :currency => 'jpy', #日本円
-    )
-    @production.update(purchaser_id: current_user.id)
-    redirect_to root_path
-    flash[:sucess] = "購入が完了しました"
+    if user_signed_in? && @production.user_id != current_user.id
+      redirect_to show_production_path
+      flash[:sucess] = "購入できません"
+    else
+      @production = Production.find(params[:production_id])
+        card = Card.where(user_id: current_user.id).first
+        Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+        Payjp::Charge.create(
+        :amount => @production.price, #支払金額を入力（itemテーブル等に紐づけても良い）
+        :customer => card.customer_id, #顧客ID
+        :currency => 'jpy', #日本円
+      )
+      @production.update(purchaser_id: current_user.id)
+      redirect_to root_path
+      flash[:sucess] = "購入が完了しました"
 
 
   end
