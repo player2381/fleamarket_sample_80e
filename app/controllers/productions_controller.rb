@@ -26,7 +26,10 @@ class ProductionsController < ApplicationController
     @production = Production.new(production_params)
     if @production.save
       redirect_to root_path(@production.user_id)
+      flash[:sucess] = "商品を出品しました"
     else
+      @production.images.new
+      flash[:sucess] = "必須事項を入力してください"
       render :new
     end
   end
