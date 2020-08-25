@@ -2,7 +2,7 @@ class PurchaseController < ApplicationController
   
   require 'payjp'
 
-  # before_action :authenticate_user! :only [:index]
+  before_action :authenticate_user! :only [:index]
 
   def index
     @production = Production.find(params[:production_id]) 
