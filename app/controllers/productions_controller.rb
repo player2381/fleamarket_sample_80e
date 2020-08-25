@@ -37,11 +37,19 @@ class ProductionsController < ApplicationController
   def edit
     @production = Production.find(params[:id])
     @category = Category.where(ancestry: "")
+    if @production.user_id != current_user.id
+      flash[:sucess] = "不正なアクセスです"
+      redirect_to root_path
+    end
   end
 
 
   def update
     @production = Production.find(params[:id])
+    if @production.user_id != current_user.id
+      flash[:sucess] = "できません"
+      redirect_to root_path
+    end
     if @production.update(production_params)
       redirect_to root_path
       flash[:sucess] = "商品情報変更しました"
@@ -54,6 +62,10 @@ class ProductionsController < ApplicationController
 
   def destroy
     production = Production.find(params[:id])
+    if @production.user_id != current_user.id
+      flash[:sucess] = "できません"
+      redirect_to root_path
+    end
     if production.user_id == current_user.id
       production.destroy
       redirect_to root_path, notice: '削除しました'
