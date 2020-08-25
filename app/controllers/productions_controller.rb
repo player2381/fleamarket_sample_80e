@@ -1,5 +1,5 @@
 class ProductionsController < ApplicationController
-  # before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new]
 
   def index
     @productions = Production.includes(:images).order('created_at DESC').limit(5)
