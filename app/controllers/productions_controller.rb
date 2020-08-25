@@ -1,5 +1,5 @@
 class ProductionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  # before_action :authenticate_user!, only: [:new]
 
   def index
     @productions = Production.includes(:images).order('created_at DESC').limit(5)
@@ -36,37 +36,15 @@ class ProductionsController < ApplicationController
     @category = Category.where(ancestry: "")
   end
 
+
   def update
     @production = Production.find(params[:id])
-    @production.update(production_params)
-    if production_params[:images_attributes].nil?
-      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
-      render :edit
+    if @production.update(production_params)
+      redirect_to root_path
     else
-      exit_ids = []
-      production_params[:images_attributes].each do |a,b|
-      exit_ids << production_params[:images_attributes].dig(:"#{a}",:id).to_i
-    end
-      ids = Image.where(production_id: params[:id]).map{|image| image.id }
-      delete__db = ids - exit_ids
-      Image.where(id:delete__db).destroy_all
-      @production.touch
-      if @production.update(production_params)
-        redirect_to  root_path
-      else
-        flash.now[:alert] = '更新できませんでした'
-        render :edit
-      end
+      render :edit
     end
   end
-
-  # def update
-  #   if @production.update(product_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
 
 
   def destroy
