@@ -24,7 +24,7 @@ class ProductionsController < ApplicationController
 
   def create
     @production = Production.new(production_params)
-    if @production.save!
+    if @production.save
       redirect_to root_path(@production.user_id)
     else
       render :new
@@ -43,6 +43,7 @@ class ProductionsController < ApplicationController
       redirect_to root_path
     else
       render :edit
+      flash[:sucess] = "必須事項を入力してください"
     end
   end
 
