@@ -9,7 +9,7 @@ require("@rails/activestorage").start()
 require("../products")
 require("../category")
 require("../payjp")
-require("../edit")
+// require("../edit")
 require("channels")
 require('jquery')
 
