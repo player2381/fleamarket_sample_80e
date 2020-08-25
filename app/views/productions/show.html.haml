@@ -10,6 +10,10 @@
           = "Sold Out"
     .item__name
       = @production.name
+    .item__like  
+      .item__like__content
+        %div{:id => "like-btn-#{@production.id}"}
+          = render 'likes/like', production: @production
     .item__photos
       %img
         .item__photos-first

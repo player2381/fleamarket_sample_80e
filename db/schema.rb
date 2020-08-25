@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_15_160453) do
+ActiveRecord::Schema.define(version: 2020_08_24_092404) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address_first_name", null: false
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 2020_08_15_160453) do
     t.index ["production_id"], name: "index_images_on_production_id"
   end
 
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "production_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["production_id"], name: "index_likes_on_production_id"
+    t.index ["user_id", "production_id"], name: "index_likes_on_user_id_and_production_id", unique: true
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
   create_table "productions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name", null: false
@@ -104,4 +114,6 @@ ActiveRecord::Schema.define(version: 2020_08_15_160453) do
   end
 
   add_foreign_key "images", "productions"
+  add_foreign_key "likes", "productions"
+  add_foreign_key "likes", "users"
 end

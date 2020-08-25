@@ -22,6 +22,11 @@ crumb :card_show do
   parent :mypage
 end
 
+# crumb :user_index do
+#   link "お気に入り一覧", users_path
+#   parent :mypage
+# end
+
 crumb :production_show do
   link "商品詳細", production_path
   parent :mypage

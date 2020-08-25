@@ -17,9 +17,28 @@
       margin: 20px 0 5px 0;
       font-weight: bold;
     }
+
+    &__like {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      &__content{ 
+        width: 180px;
+        height: 25px;
+        margin: 0 20px 0 0;
+        font-weight: bold;
+        background-color: #3ccace;
+        a {
+          text-align: center;
+          font-size: 15px;
+          color: white
+        }
+      }
+    }
+
     &__photos {
       display: block;
-      margin: 0px 10px 10px 10px;
+      margin: px 10px 10px 10px;
         .item__photos-first{
           display: flex;
           justify-content: center;
