@@ -63,12 +63,11 @@ describe Production do
       production.valid?
       expect(production.errors[:category_id]).to include("can't be blank")
     end
-   
+  
     xit "imagesが空では登録できない" do
       user = create(:user)
       category = create(:category)
       production = FactoryBot.build(:production, user_id: user[:id], category_id: category[:id])
-      binding.pry
       production.valid?
       expect(production.errors[:images]).to include('test')
     end
