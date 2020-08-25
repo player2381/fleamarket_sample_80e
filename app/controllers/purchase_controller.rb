@@ -5,10 +5,12 @@ class PurchaseController < ApplicationController
   # before_action :authenticate_user! :only [:index]
 
   def index
-    if user_signed_in? && purchaser_id.nil? 
     @production = Production.find(params[:production_id]) 
-
     card = Card.where(user_id: current_user.id).first
+    if @production.user_id == current_user.id
+      flash[:sucess] = "あなたの商品です"
+      redirect_to root_path
+    end
     if card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "cards", action: "new"
@@ -23,7 +25,8 @@ class PurchaseController < ApplicationController
 
   def pay
     @production = Production.find(params[:production_id])
-    if user_signed_in? && @production.user_id != current_user.id
+    # if user_signed_in? && @production.user_id != current_user.id
+    if user_signed_in? && @production.purchaser_id == nil
         card = Card.where(user_id: current_user.id).first
         Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
         Payjp::Charge.create(
@@ -35,7 +38,7 @@ class PurchaseController < ApplicationController
       redirect_to root_path
       flash[:sucess] = "購入が完了しました"
     else
-      redirect_to show_production_path
+      redirect_to production_path(@production.id)
       flash[:sucess] = "購入できません"
     end
     
