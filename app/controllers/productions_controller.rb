@@ -41,6 +41,7 @@ class ProductionsController < ApplicationController
     @production = Production.find(params[:id])
     if @production.update(production_params)
       redirect_to root_path
+      flash[:sucess] = "商品情報変更しました"
     else
       render :edit
       flash[:sucess] = "必須事項を入力してください"
