@@ -43,7 +43,7 @@ class ProductionsController < ApplicationController
       redirect_to root_path
       flash[:sucess] = "商品情報変更しました"
     else
-      render :edit
+      redirect_to edit_production_path
       flash[:sucess] = "必須事項を入力してください"
     end
   end
