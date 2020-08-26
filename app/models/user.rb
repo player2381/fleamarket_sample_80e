@@ -9,6 +9,4 @@ class User < ApplicationRecord
   has_one :address
   has_one :card
   has_many :productions
-  has_many :likes, dependent: :destroy
-  has_many :like_productions, through: :likes, source: :production
 end
