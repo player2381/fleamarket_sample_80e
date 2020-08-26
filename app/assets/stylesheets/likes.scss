@@ -1,4 +1,9 @@
 // Place all the styles related to the likes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+.like__on {
+  background-color: red;
+}
+.like__off {
+  background-color: #3ccace;
+}
