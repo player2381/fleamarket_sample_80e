@@ -17,11 +17,9 @@
       margin: 20px 0 5px 0;
       font-weight: bold;
     }
-
-
     &__photos {
       display: block;
-      margin: px 10px 10px 10px;
+      margin: 0px 10px 10px 10px;
         .item__photos-first{
           display: flex;
           justify-content: center;
@@ -85,49 +83,28 @@
     &__price{
       display: flex;
       justify-content: center;
-      a{
-        font-size: 40px;
-        font-weight: bold;
-        font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+      margin: 10px 0 20px 0;
+      .price1{
+        a{
+          font-size: 40px;
+          font-weight: bold;
+          font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+        }
       }
-    }
-    &__shipping{
-      display: flex;
-      justify-content: right;
-      margin: 0 0 0 260px;
-      &__charge{
-      margin: 0 0 0 ;
+      .price2{
+        margin: 20px 0 0 2px;
         a{
           font-size: 20px;
           font-weight: normal;
           font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
         }
       }
-      &__like {
-        // width: 30%;
-        // display: flex;
-        // justify-content: flex-end;
-        &__content{ 
-          width: 80px;
-          height: 16px;
-          margin: 10px 0 0 20px;
-          font-weight: bold;
-          background-color: #3ccace;
-          a {
-            text-align: center;
-            font-size: 10px;
-            color: white
-          }
-        }
-      }
     }
   }
-
-
     .item__delete{
       display: flex;
       justify-content: center;
-      margin: 20px 0 10px 0;
+      margin-bottom: 5px;
       .btn{
         height: 70px;
         width: 600px;

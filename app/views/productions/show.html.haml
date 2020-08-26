@@ -65,21 +65,14 @@
       .item__introduction__content
         = @production.introduction
 
-    
     .item__price
-      %a 
-        = @production.price
-        円
-    .item__shipping
-      .item__shipping__charge
+      .price1
+        %a 
+          = @production.price
+          円
+      .price2 
         %a
           = @production.shipping_charge
-      .item__shipping__like  
-        .item__shipping__like__content
-          %div{:id => "like-btn-#{@production.id}"}
-            = render 'likes/like', production: @production
-          
-    
 
     - if user_signed_in? && current_user.id == @production.user_id
       .item__delete
