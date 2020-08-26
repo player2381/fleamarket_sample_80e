@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   resources :cards do
     collection do
-      #payjpでトークン化を行う
       post 'pay', to: 'cards#pay'
     end
   end
@@ -24,12 +23,10 @@ Rails.application.routes.draw do
     collection do
       get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
-      # get 'update'
     end
     resources :purchase, only: [:index] do
       collection do
         post 'pay', to: 'purchase#pay'
-        # get 'done', to: 'purchase#done'
       end
     end
   end

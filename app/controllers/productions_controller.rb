@@ -1,5 +1,5 @@
 class ProductionsController < ApplicationController
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @productions = Production.includes(:images).order('created_at DESC').limit(5)
@@ -24,9 +24,12 @@ class ProductionsController < ApplicationController
 
   def create
     @production = Production.new(production_params)
-    if @production.save!
+    if @production.save
       redirect_to root_path(@production.user_id)
+      flash[:sucess] = "商品を出品しました"
     else
+      @production.images.new
+      flash[:sucess] = "必須事項を入力してください"
       render :new
     end
   end
@@ -34,45 +37,37 @@ class ProductionsController < ApplicationController
   def edit
     @production = Production.find(params[:id])
     @category = Category.where(ancestry: "")
+    if @production.user_id != current_user.id
+      flash[:sucess] = "不正なアクセスです"
+      redirect_to root_path
+    end
   end
+
 
   def update
     @production = Production.find(params[:id])
-    @production.update(production_params)
-    if production_params[:images_attributes].nil?
-      flash.now[:alert] = '更新できませんでした 【画像を１枚以上入れてください】'
-      render :edit
-    else
-      exit_ids = []
-      production_params[:images_attributes].each do |a,b|
-      exit_ids << production_params[:images_attributes].dig(:"#{a}",:id).to_i
+    if @production.user_id != current_user.id
+      flash[:sucess] = "できません"
+      redirect_to root_path
     end
-      ids = Image.where(production_id: params[:id]).map{|image| image.id }
-      delete__db = ids - exit_ids
-      Image.where(id:delete__db).destroy_all
-      @production.touch
-      if @production.update(production_params)
-        redirect_to  root_path
-      else
-        flash.now[:alert] = '更新できませんでした'
-        render :edit
-      end
+    if @production.update(production_params)
+      redirect_to root_path
+      flash[:sucess] = "商品情報変更しました"
+    else
+      redirect_to edit_production_path
+      flash[:sucess] = "必須事項を入力してください"
     end
   end
 
-  # def update
-  #   if @production.update(product_params)
-  #     redirect_to root_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-
 
   def destroy
-    production = Production.find(params[:id])
-    if production.user_id == current_user.id
-      production.destroy
+    @production = Production.find(params[:id])
+    if @production.user_id != current_user.id
+      flash[:sucess] = "できません"
+      redirect_to root_path
+    end
+    if @production.user_id == current_user.id
+      @production.destroy
       redirect_to root_path, notice: '削除しました'
     else
       render :edit

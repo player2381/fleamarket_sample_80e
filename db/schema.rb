@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_092404) do
     t.integer "price", null: false
     t.text "introduction", null: false
     t.bigint "purchaser_id"
-    t.integer "status"
     t.string "size", null: false
     t.string "shipping_charge", null: false
     t.string "prefecture_code", null: false
