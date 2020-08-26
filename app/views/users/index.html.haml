@@ -1,0 +1,40 @@
+= render 'productions/header'
+- breadcrumb :mypage
+= render "layouts/breadcrumbs"
+.content
+  .content-left
+    = render 'side'
+    
+  .content-right
+    .content-right__box
+      .content-pro
+        .content-pro__title
+          Trading License
+        .content-pro__name= current_user.name
+      .info
+        .info-date
+          = current_user.created_at.strftime('%Y/%m/%d')
+        .info-date
+          現在の出品数
+        .info-date
+          コメントされた数
+        .info-date
+          コメントした数
+
+    .content-right__sub
+      お気に入り一覧
+    .content-right__product
+      - @likes.each do |like|
+        .content-right__product__card
+          = link_to production_path(id: like.production.id, class: "card") do
+            = image_tag like.production.images.first.src.url,width:"150px",height:"150px"
+            -if like.production.purchaser_id.present? 
+              .items-box_photo__solid
+                .items-box_photo__solid__inner
+                  SOLD
+            %h3.name
+              = like.production.name
+            %p.price
+              = like.production.price
+              = "円 (税込み)"
+
