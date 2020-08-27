@@ -37,16 +37,16 @@ Basic認証をかけています。ご覧の際は以下のIDとPassを入力し
 <a><img src="https://user-images.githubusercontent.com/39142850/71774618-b32edb80-2fb5-11ea-9050-d5929a49e9a5.png" height="60px;" /></a> <!-- Hamlのロゴ -->
 <a><<img src="https://user-images.githubusercontent.com/39142850/71774644-115bbe80-2fb6-11ea-822c-568eabde5228.png" height="60px" /></a> <!-- Scssのロゴ -->
 
-<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F01959QNHT9/image.png" height="65px;" /></a> <!-- javascriptのロゴ -->
+<a><img src="https://prokatsu.com/wp/wp-content/uploads/2017/02/js.png" height="65px;" /></a> <!-- javascriptのロゴ -->
 
 <a><img src="https://user-images.githubusercontent.com/39142850/71774768-d064a980-2fb7-11ea-88ad-4562c59470ae.png" height="65px;" /></a> <!-- jQueryのロゴ -->
 <a><img src="https://user-images.githubusercontent.com/67769876/91068711-a0196a80-e66f-11ea-9e03-92d97eef5736.png" height="65px;" /></a> <!-- herokuのロゴ -->
 
-<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F019L2D2C02/image.png" height="65px;" /></a><!-- Linuxのロゴ -->
+<a><img src="https://i-think-it.net/wp-content/uploads/2019/05/Linux_Pengin_logo.png" height="65px;" /></a><!-- Linuxのロゴ -->
 
-<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F019GV44HMK/image.png" height="65px;" /></a> <!-- MYSQLのロゴ -->
+<a><img src="https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2016/08/mysql-320x320.png" height="65px;" /></a> <!-- MYSQLのロゴ -->
 
-<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F01959VNR6K/image.png" height="65px;" /></a> <!-- AWSのロゴ -->
+<a><img src="https://pbs.twimg.com/profile_images/1217566226827759616/hM6lnfw8_400x400.jpg" height="65px;" /></a> <!-- AWSのロゴ -->
 
 
 
