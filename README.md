@@ -2,14 +2,19 @@
 
 フリマアプリのクローンサイト。誰でも簡単に売り買いが楽しめるフリマアプリの機能を再現したページ。 ユーザー登録、商品出品、商品購入などの機能が再現されていますが、実際の取引はできません。
 
+- 制作期間 2020/8/4 ~ 8/26
+
+(https://user-images.githubusercontent.com/67986432/91411111-dbd84e00-e882-11ea-8226-bd3a18d58f18.gif)
+
+
 ## リンク
 ・IPアドレス：http://18.180.31.233/
 
 - Basic認証をかけています。ご覧の際は以下のIDとPassを入力してください。
 
 ・Basic認証
-  - ◦ID: m80teame
-  - ◦Pass: otnm80
+  - ID: m80teame
+  - Pass: otnm80
 
 
 ## テストユーザー
@@ -31,7 +36,7 @@
   - パスワード：hanako1
 
 
-## :ペーパークリップ: 主な使用言語
+## 主な使用言語
 
 <img src="https://user-images.githubusercontent.com/67986432/91398477-1b993880-e877-11ea-89dc-ac4af385b379.png" width="70px"><!-- MYSQLのロゴ -->
 <img src="https://user-images.githubusercontent.com/67986432/91398690-8ba7be80-e877-11ea-8902-92e9c1f42798.jpg" height="65px"><!-- Linuxのロゴ -->
@@ -75,7 +80,7 @@
 - パンくず
 - 商品削除（サーバーサイド）
 - DB設計
-- ユーザー新規登録、ログイン（SNSのAPI）（マージはしてません）
+- ユーザー新規登録、ログイン（SNSのAPI）（マージはしてません）
 - テストコード（ユーザー新規登録、商品出品）
 
 ## 南理沙
