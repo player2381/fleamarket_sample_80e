@@ -31,8 +31,24 @@ Basic認証をかけています。ご覧の際は以下のIDとPassを入力し
   ◦パスワード：hanako1
 
 
-## 使用した言語
-![image](https://user-images.githubusercontent.com/67986432/91381274-f6e69600-e861-11ea-9434-b2eb6ae0115d.png)
+## :ペーパークリップ: 主な使用言語
+<a><img src="https://user-images.githubusercontent.com/39142850/71774533-1ddf1780-2fb4-11ea-8560-753bed352838.png" width="70px;" /></a> <!-- rubyのロゴ -->
+<a><img src="https://user-images.githubusercontent.com/39142850/71774548-731b2900-2fb4-11ea-99ba-565546c5acb4.png" height="60px;" /></a> <!-- RubyOnRailsのロゴ -->
+<a><img src="https://user-images.githubusercontent.com/39142850/71774618-b32edb80-2fb5-11ea-9050-d5929a49e9a5.png" height="60px;" /></a> <!-- Hamlのロゴ -->
+<a><<img src="https://user-images.githubusercontent.com/39142850/71774644-115bbe80-2fb6-11ea-822c-568eabde5228.png" height="60px" /></a> <!-- Scssのロゴ -->
+
+<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F01959QNHT9/image.png" height="65px;" /></a> <!-- javascriptのロゴ -->
+
+<a><img src="https://user-images.githubusercontent.com/39142850/71774768-d064a980-2fb7-11ea-88ad-4562c59470ae.png" height="65px;" /></a> <!-- jQueryのロゴ -->
+<a><img src="https://user-images.githubusercontent.com/67769876/91068711-a0196a80-e66f-11ea-9e03-92d97eef5736.png" height="65px;" /></a> <!-- herokuのロゴ -->
+
+<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F019L2D2C02/image.png" height="65px;" /></a><!-- Linuxのロゴ -->
+
+<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F019GV44HMK/image.png" height="65px;" /></a> <!-- MYSQLのロゴ -->
+
+<a><img src="https://files.slack.com/files-pri/T0134JA6Q83-F01959VNR6K/image.png" height="65px;" /></a> <!-- AWSのロゴ -->
+
+
 
 
 
