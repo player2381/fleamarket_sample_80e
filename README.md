@@ -93,6 +93,9 @@
 - 商品出品機能（実際の実装はカリキュラム参考、画像のプレビュー、count）
 - 商品情報編集（サーバー、フロント（出品の時のビューをif定義でrender切替））
 
+## ER図
+<img width="1376" alt="ER図" src="https://user-images.githubusercontent.com/67785156/91420590-e0573380-e88f-11ea-80fb-658c6484efd9.png">
+
 
 ## users
 |Column|Type|Options|
