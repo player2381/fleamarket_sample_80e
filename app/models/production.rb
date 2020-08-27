@@ -3,7 +3,7 @@ class Production < ApplicationRecord
   belongs_to :user, foreign_key: 'user_id'
   belongs_to :category
   has_many :images, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :users, through: :likes
   accepts_nested_attributes_for :images, allow_destroy: true
 
