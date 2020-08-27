@@ -1,5 +1,41 @@
 # README fleamarket_sample_80e DB設計
 
+フリマアプリのクローンサイト。誰でも簡単に売り買いが楽しめるフリマアプリの機能を再現したページ。 ユーザー登録、商品出品、商品購入などの機能が再現されていますが、実際の取引はできません。
+
+## リンク
+・IPアドレス：http://18.180.31.233/
+
+Basic認証をかけています。ご覧の際は以下のIDとPassを入力してください。
+
+・Basic認証
+  ◦ID: m80teame
+  ◦Pass: otnm80
+
+
+## テストユーザー
+
+◯ 購入者用
+
+  ◦メールアドレス：test@gmail.com
+  ◦パスワード：testtest
+
+◯ 購入用カード情報
+
+  ◦番号：4242424242424242
+  ◦期限：1/25
+  ◦セキュリティコード：123
+
+◯ 出品者用
+
+  ◦メールアドレス：hanako@gmail.com
+  ◦パスワード：hanako1
+
+
+## 使用した言語
+![image](https://user-images.githubusercontent.com/67986432/91381274-f6e69600-e861-11ea-9434-b2eb6ae0115d.png)
+
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -124,3 +160,5 @@ Things you may want to cover:
 |user_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
+
+
