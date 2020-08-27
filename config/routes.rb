@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
 
   resources :productions do
+    post 'add' => 'likes#create'
+    delete '/add' => 'likes#destroy'
     collection do
-      post 'add' => 'likes#create'
-      delete '/add' => 'likes#destroy'
       get 'category/get_category_children', to: 'productions#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'productions#get_category_grandchildren', defaults: { format: 'json' }
     end
