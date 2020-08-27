@@ -32,15 +32,29 @@ Basic認証をかけています。ご覧の際は以下のIDとPassを入力し
 
 
 ## :ペーパークリップ: 主な使用言語
-<a><img src="logo.png" width="70px;" /></a> <!-- rubyのロゴ -->
-<a><img src="rails-logo.png" height="60px;" /></a> <!-- RubyOnRailsのロゴ -->
-<a><img src="haml.png" height="60px;" /></a> <!-- Hamlのロゴ -->
-<a><<img src="saas-457964.png" height="60px" /></a> <!-- Scssのロゴ -->
-<a><img src="js.png" height="65px;" /></a> <!-- javascriptのロゴ -->
-<a><img src="jquery-logo.png" height="65px;" /></a> <!-- jQueryのロゴ -->
-<a><img src="Linux_Pengin_logo.png" height="65px;" /></a><!-- Linuxのロゴ -->
-<a><img src="mysql_icon.png" height="65px;" /></a> <!-- MYSQLのロゴ -->
-<a><img src="AWS.jpg" height="65px;" /></a> <!-- AWSのロゴ -->
+
+![mysql_icon](https://user-images.githubusercontent.com/67986432/91398477-1b993880-e877-11ea-89dc-ac4af385b379.png), size: 100x100
+<!-- MYSQLのロゴ -->
+![linux](https://user-images.githubusercontent.com/67986432/91398690-8ba7be80-e877-11ea-8902-92e9c1f42798.jpg), size: 100x100
+<!-- Linuxのロゴ -->
+![jquery-logo](https://user-images.githubusercontent.com/67986432/91398332-dd037e00-e876-11ea-9dde-ed14764ad808.png), size: 100x100
+<!-- jQueryのロゴ -->
+![js](https://user-images.githubusercontent.com/67986432/91398289-c78e5400-e876-11ea-9d71-3c666e8ca090.png), size: 100x100
+<!-- javascriptのロゴ -->
+![saas-457964](https://user-images.githubusercontent.com/67986432/91398121-ad547600-e876-11ea-856c-c4e6035f3bac.png), size: 100x100
+<!-- Scssのロゴ -->
+![rails-logo](https://user-images.githubusercontent.com/67986432/91397825-97df4c00-e876-11ea-9390-faa3aa0a62ca.png), size: 100x100
+<!-- RubyOnRailsのロゴ -->
+![logo](https://user-images.githubusercontent.com/67986432/91396866-4e8efc80-e876-11ea-9bab-980dda445ce9.png), size: 100x100
+<!-- rubyのロゴ -->
+![haml](https://user-images.githubusercontent.com/67986432/91393627-3f5b7f00-e875-11ea-825e-2dbf186f4f62.png), size: 100x100
+<!-- hamlのロゴ -->
+![AWS](https://user-images.githubusercontent.com/67986432/91391018-82692280-e874-11ea-8928-04d0babf5f18.jpg), size: 100x100
+<!-- AWSのロゴ -->
+
+
+
+
 
 
 
