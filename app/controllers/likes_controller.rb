@@ -3,13 +3,11 @@ class LikesController < ApplicationController
 
 
   def create
-    @user = current_user
-    @like = Like.create(user_id: @user.id, production_id: @production.id)
+    like = Like.create(user_id: current_user.id, production_id: @production.id)
   end
 
   def destroy
-    @user = current_user
-    like = Like.find_by(user_id: @user.id, production_id: @production.id)
+    like = Like.find_by(user_id: current_user.id, production_id: @production.id)
     like.delete
   end
 
