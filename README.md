@@ -2,7 +2,7 @@
 
 フリマアプリのクローンサイト。誰でも簡単に売り買いが楽しめるフリマアプリの機能を再現したページ。 ユーザー登録、商品出品、商品購入などの機能が再現されていますが、実際の取引はできません。
 
-- 制作期間 2020/8/4 ~ 8/26
+- 制作期間 2020/8/4 ~ 8/27
 
 (https://user-images.githubusercontent.com/67986432/91411111-dbd84e00-e882-11ea-8226-bd3a18d58f18.gif)
 
@@ -61,6 +61,7 @@
 - デプロイ担当
 - 商品詳細表示（サーバーサイド）
 - お気に入り機能（フロント、サーバー）
+- ユーザーマイページ/お気に入り一覧
 
 ## 西野拓己
 
@@ -105,9 +106,11 @@
 - has_one :address
 - has_one :card
 - has_many :productions
+- has_many :likes, dependent: :destroy
+- has_many :like_productions, through: :likes, source: :production
 
 
-## card
+## cards
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
@@ -143,9 +146,12 @@
 ### Association
 - belongs_to :category
 - belongs_to :user, foreign_key: 'user_id'
+- has_many :likes, dependent: :destroy
+- has_many :users, through: :likes
 - has_many :images, dependent: :destroy
 - accepts_nested_attributes_for :images,
   allow_destroy:true
+
 
 
 ## category
@@ -176,7 +182,7 @@
 - belongs_to :user, optional: true
 
 
-## purchase
+## purchases
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
@@ -187,11 +193,21 @@
 - belongs_to :production
 
 
-## customer
+## customers
 |Column|Type|Options|
 |------|----|-------|
 |user_id|references|foreign_key: true|
 ### Association
 - belongs_to :user
+
+
+## likes
+|column|Type|Options|
+|------|----|-------|
+|user_id|references|foreign_key: true|
+|production_id|references|foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :production
 
 
