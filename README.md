@@ -4,7 +4,7 @@
 
 - 制作期間 2020/8/4 ~ 8/26
 
-(https://user-images.githubusercontent.com/67986432/91411111-dbd84e00-e882-11ea-8226-bd3a18d58f18.gif)
+<a>![top_page](https://user-images.githubusercontent.com/67986432/91411111-dbd84e00-e882-11ea-8226-bd3a18d58f18.gif)</a>
 
 
 ## リンク
