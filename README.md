@@ -5,30 +5,30 @@
 ## リンク
 ・IPアドレス：http://18.180.31.233/
 
-Basic認証をかけています。ご覧の際は以下のIDとPassを入力してください。
+- Basic認証をかけています。ご覧の際は以下のIDとPassを入力してください。
 
 ・Basic認証
-  ◦ID: m80teame
-  ◦Pass: otnm80
+  - ◦ID: m80teame
+  - ◦Pass: otnm80
 
 
 ## テストユーザー
 
 ◯ 購入者用
 
-  ◦メールアドレス：test@gmail.com
-  ◦パスワード：testtest
+  - メールアドレス：test@gmail.com
+  - パスワード：testtest
 
 ◯ 購入用カード情報
 
-  ◦番号：4242424242424242
-  ◦期限：1/25
-  ◦セキュリティコード：123
+  - 番号：4242424242424242
+  - 期限：1/25
+  - セキュリティコード：123
 
 ◯ 出品者用
 
-  ◦メールアドレス：hanako@gmail.com
-  ◦パスワード：hanako1
+  - メールアドレス：hanako@gmail.com
+  - パスワード：hanako1
 
 
 ## :ペーパークリップ: 主な使用言語
@@ -44,34 +44,48 @@ Basic認証をかけています。ご覧の際は以下のIDとPassを入力し
 <img src="https://user-images.githubusercontent.com/67986432/91391018-82692280-e874-11ea-8928-04d0babf5f18.jpg" height="65px"><!-- AWSのロゴ -->
 
 
-
-
-
-
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+## バージョン
 
 * Ruby version 6.0.0
 
-* System dependencies
 
-* Configuration
+## チーム開発メンバー（実装内容）
 
-* Database creation
+## 田中靖之
 
-* Database initialization
+- デプロイ担当
+- 商品詳細表示（サーバーサイド）
+- お気に入り機能（フロント、サーバー）
 
-* How to run the test suite
+## 西野拓己
 
-* Services (job queues, cache servers, search engines, etc.)
+- ユーザーマイページ（フロント、サーバー）
+- 商品詳細ページ（フロント）
+- 商品購入確認ページ
+- 商品一覧表示（フロント）
 
-* Deployment instructions
 
-* ...
+## 小野憲次
+
+- トップページ（フロント、サーバー）
+- 商品一覧表示（サーバー）
+- カテゴリー機能（商品出品時に商品のカテゴリー登録できるようにする）
+- 商品出品機能（サーバー、フロント）
+- ユーザー新規登録/ログインページ（フロント）
+- パンくず
+- 商品削除（サーバーサイド）
+- DB設計
+- ユーザー新規登録、ログイン（SNSのAPI）（マージはしてません）
+- テストコード（ユーザー新規登録、商品出品）
+
+## 南理沙
+
+- 商品購入機能(サーバー)
+- 売り切れがsold表示されるようにする（サーバー、フロント）
+- カテゴリー機能（ancestry導入、seed.rb記述）
+- ユーザー新規登録（サーバー、誕生日欄追加）
+- 商品出品機能（実際の実装はカリキュラム参考、画像のプレビュー、count）
+- 商品情報編集（サーバー、フロント（出品の時のビューをif定義でrender切替））
 
 
 ## users
